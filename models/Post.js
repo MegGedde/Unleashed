@@ -15,6 +15,7 @@ Post.init(
         type: DataTypes.STRING,
         allowNull: false
         //add map?
+        //city, state, country
       },
       pet_id: {
         type: DataTypes.INTEGER,

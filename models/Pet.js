@@ -35,7 +35,6 @@ Pet.init(
       },
       photo: {
       //figure out how to add photo
-      //want this on the pet or on the post model?
       },
       user_id: {
         type: DataTypes.INTEGER,
