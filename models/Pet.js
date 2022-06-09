@@ -35,7 +35,7 @@ Pet.init(
       },
       photo: {
       //figure out how to add photo
-      type: DataTypes.STRING,
+      type: DataTypes.BLOB,
       allowNull: false
       },
       // user_id: {

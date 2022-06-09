@@ -1,6 +1,8 @@
 const router = require('express').Router();
-
+const multer  = require('multer')
+const upload = multer({ dest: '../../uploads' })
 const { Pet } = require('../../models')
+const {uploadFile} = require('../../s3')
 
 // Get all pets 
 router.get('/', (req, res) => {
@@ -102,4 +104,13 @@ router.put('/:id', (req, res) => {
         res.status(500).json(err);
       });
 })
+
+router.post('/upload', upload.single('image'), async (req, res) => {
+    const file = req.file
+    const result = await uploadFile(file)
+    console.log(result)
+    const description = req.body.description
+    res.send(`Success!`)
+  })
+
 module.exports = router
