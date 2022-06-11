@@ -1,0 +1,20 @@
+<!-- QUICK FILTER -->
+<section>
+    <button>Dogs</button>
+    <button>Cats</button>
+    <button>Reptile</button>
+    <button>Others</button>
+</section>
+
+<!-- SEARCH BAR FORM -->
+<form>
+    <input type="text" placeholder="Search...">
+    <button>[icon]</button>
+</form>
+
+{{!-- POSTS DISPLAY --}}
+<div>
+    {{#each posts as |post|}}
+    {{> post-info post }}
+    {{/each}}
+</div>
