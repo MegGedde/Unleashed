@@ -33,9 +33,9 @@ Pet.init(
         type: DataTypes.STRING,
         allowNull: false
       },
-      photo: {
+      // photo: {
       //figure out how to add photo
-      },
+      // },
       user_id: {
         type: DataTypes.INTEGER,
         references: {

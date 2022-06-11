@@ -70,7 +70,7 @@ router.get('/:id', (req, res) => {
   });
 
   //create a post
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
     Post.create({
         last_seen_time: req.body.last_seen_time,
         last_seen_street: req.body.last_seen_street,
