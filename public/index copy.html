@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unleashed</title>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="./stylesheets/style copy.css" />
 </head>
 
@@ -34,24 +34,29 @@
   </section>
 
   <!-- SEARCH BAR FORM -->
-  <form>
-    <input type="text" placeholder="Search...">
+  <div class="columns is-mobile is-centered">
+  <form class="column is-half">
+    <input  type="text" placeholder="Search...">
     <button>[icon]</button>
   </form>
+</div>
 
   <!-- LOG IN FORM -->
-  <form>
-    <div>
+  <div class="columns is-mobile is-centered">
+  <form >
+    <div class="column is-half">
       <input type="text" placeholder="Username">
-      <input type="password" placeholder="Password">
+      <input type="password" placeholder="Password"> <br>
       <a>Forgot password?</a>
     </div>
     <button>Log In</button>
   </form>
+</div>
 
   <!-- SIGN UP FORM -->
+  <div class="columns is-mobile is-centered">
   <form>
-    <div>
+    <div class="column is-half">
       <input type="text" placeholder="Username">
       <input type="email" placeholder="Email">
       <input type="number" placeholder="Primary Phone">
@@ -63,6 +68,7 @@
     </div>
     <button>Sign Up</button>
   </form>
+</div>
 
   <!-- PET INFO FORM -->
   <form>

@@ -20,10 +20,14 @@
 header {
   background: var(--quinary-color);
   color: var(--senary-color);
+  text-align: center;
 }
 
 form {
   background: var(--quaternary-color);
+  border-radius: 5px;
+  
+ 
 }
 
 /* Button Styling */
