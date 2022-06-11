@@ -33,7 +33,7 @@ Pet.init(
         type: DataTypes.STRING,
         allowNull: false
       },
-      photo: {
+      // photo: {
       //figure out how to add photo
       type: DataTypes.STRING,
       allowNull: false
