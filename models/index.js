@@ -44,9 +44,11 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id'
 });
 
+
 Seen.belongs(Pet, {
   foreignKey: 'pet_id'
 });
 
 module.exports = { User, Post, Comment, Pet, Seen };
+
 
