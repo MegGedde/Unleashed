@@ -8,14 +8,38 @@
   </head>
   <body>
     <form
-      class="image-form"
-      action="/api/pets/upload"
+      action="/api/pets/images"
       method="post"
       enctype="multipart/form-data"
+      class="pet-info-form"
     >
-      <input type="file" name="image" accept="image/png, image/jpg" />
-      <button type="submit">Submit</button>
+      <input
+        type="text"
+        placeholder="Pet Name"
+        name="pet_name"
+        class="pet-name"
+      />
+      <input type="text" placeholder="Species" name="species" class="species" />
+      <input type="text" placeholder="Breed" name="breed" class="breed" />
+      <input type="text" placeholder="Color" name="color" class="color" />
+      <input
+        type="text"
+        placeholder="When Encountered"
+        name="when_encounter"
+        class="when-encounter"
+      />
+      <input type="file" name="photo" accept="image/png, image/jpg" />
+
+      <button type="submit">Create Pet</button>
     </form>
-    <script src="./js/app.js"></script>
+    <!-- <form
+      class="image-form"
+      action="/api/pets/images"
+      enctype="multipart/form-data"
+      method="post"
+    >
+      <button type="submit">Click Here to Load Photo</button>
+    </form> -->
+    <script src="./js/pet.js"></script>
   </body>
 </html>
