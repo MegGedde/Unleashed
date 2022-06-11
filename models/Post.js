@@ -11,11 +11,25 @@ Post.init(
         primaryKey: true,
         autoIncrement: true
       },
-      last_seen: {
+      last_seen_time: {
         type: DataTypes.STRING,
         allowNull: false
-        //add map?
-        //city, state, country
+      },
+      last_seen_street: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      last_seen_city: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      last_seen_state: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      last_seen_country: {
+        type: DataTypes.STRING,
+        allowNull: false
       },
       pet_id: {
         type: DataTypes.INTEGER,
