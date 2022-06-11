@@ -120,9 +120,11 @@ router.get('/images/:key', (req, res) => {
     // res.redirect(`/images/${key}`)
 })
  
-// Uploads the image to AWS bucket
-router.post('/images', upload.single('photo'), async (req, res) => {
+// Grabs form data and creates a new Pet 
+router.post('/create-pet', upload.single('photo'), async (req, res) => {
     const file = req.file
+
+    // Uploads the image to AWS bucket 
     const result = await uploadFile(file)
 
     // Grab form data
@@ -135,7 +137,7 @@ router.post('/images', upload.single('photo'), async (req, res) => {
 
     // Removes file from 'uploads' directory
     await removeFile(file.path)
-    res.redirect(`/images/:${result.Key}`)
+    res.redirect(`/api/pets/images/${result.Key}`)
 
     // Insert form data to create a new pet
     Pet.create({
@@ -147,18 +149,10 @@ router.post('/images', upload.single('photo'), async (req, res) => {
         photo: petPhoto
                 // user_id: req.body.user_id
     })
-    // .then(dbPetData => {
-    //     res.json(dbPetData)
-    // })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
- 
-  })
-
-  router.post('/test', (req, res) => {
-    console.log(req.body)
   })
 
 module.exports = router
