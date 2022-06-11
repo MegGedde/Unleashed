@@ -3,7 +3,7 @@ require('dotenv').config();
 
 
 // create connection to our database
-// JAWSDB_URL link to Heroku database for when deploy our app
+// JAWSDB_URL link to Heroku database for when we deploy our app
 let sequelize;
 
 if (process.env.JAWSDB_URL) {
