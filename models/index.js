@@ -49,3 +49,4 @@ Seen.belongs(Pet, {
 });
 
 module.exports = { User, Post, Comment, Pet, Seen };
+
