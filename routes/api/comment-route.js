@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { Comments } = require('./../models/Comments');
-const {restore} = require('../../models/Comments');
+const { Comment } = require('./../models/Comment');
+const {restore} = require('../../models/Comment');
 
 // the `/api/comments` endpoint 
 
 router.get('/', (req, res) => {
     // find all comments
     // be sure comments are associated with post
-    Comments.findAll ({
+    Comment.findAll ({
         attributes: ['id', ''],
         instance: [
             {

@@ -7,15 +7,10 @@ Comment.init(
     {
       id: {
           type: DataTypes.INTEGER,
+          allowNull: false,
           primaryKey: true,
           autoIncrement: true
         },
-      comment_text: {
-          type: DataTypes.STRING,
-          validate: {
-              len: [1]
-          }
-      },
       user_id: {
           type: DataTypes.INTEGER,
           allowNull: false,
@@ -31,7 +26,21 @@ Comment.init(
             model: 'post',
             key: 'id'
           }
-        }
+        },
+        lastseen: { 
+          type: DataTypes.TEXT, 
+          allowNull: false,
+        },
+        user: {
+          type: DataTypes.TEXT,
+          allowNull: false,
+        },
+        comment: {
+          type: DataTypes.TEXT,
+        },
+        pinned: {
+          type: DataTypes.TEXT,
+        },
       },  
     {
       sequelize,
