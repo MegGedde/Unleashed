@@ -1,15 +1,13 @@
 const router = require('express').Router();
 
-const apiRoutes = require('./api');
+const petRoutes = require('./pet-routes')
+router.use('/pets', petRoutes)
 
-const homeRoutes = require('./home-routes.js');
 
-router.use('/api', apiRoutes);
+const postRoutes = require('./post-routes');
 
-router.use((req, res) => {
-  res.status(404).end();
-});
-
-router.use('/', homeRoutes);
+router.use('/posts', postRoutes);
 
 module.exports = router;
+
+

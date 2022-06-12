@@ -1,0 +1,122 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unleashed</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./stylesheets/style.css" /> 
+</head>
+<body class="my-element">
+
+    <div>
+        <section class="hero is-primary">
+            <div class="hero-body">
+              <p class="title">
+                UNLEASHED
+              </p>
+              <p class="subtitle">
+                Primary subtitle
+              </p>
+            </div>
+          </section>
+        <h1>Unleashed</h1>
+        <h2>subheadings1</h2>
+        <h3>subheadings2</h3>
+        
+    </div><br>
+    
+    </div>
+    <input class="input is-normal size" type="text" placeholder="input field">
+    <div> <br> <br>
+
+    <div>
+            <!--generic button-->
+    <button class="button is-primary bulma-control-mixin">Generic Button</button> <br> <br>
+        
+    </div>
+    <form class="box">
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input class="input" type="email" placeholder="e.g. alex@example.com">
+          </div>
+        </div>
+      
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" placeholder="********">
+          </div>
+        </div>
+      
+        <button class="button is-primary">Sign in</button>
+      </form><br><br>
+
+    <div>
+        <div class="control">
+            <div class="select">
+              <select>
+                <option>Select dropdown</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+    </div><br><br>
+
+    <div>
+
+        <label class="label">Comments</label>
+        <div class="text">
+          <textarea class="textarea" placeholder="Textarea"></textarea> <BR>
+          <div class="control">
+            <button class="button is-link">Submit</button>
+          </div>
+        </div>
+        
+    </div>
+
+    <div>
+        
+    </div>
+
+    <div>
+        
+    </div>
+
+    <div>
+        
+    </div>
+
+    <div>
+<!--This is the dummy form I set up to work with the Pet data submission        -->
+         <form
+      action="/api/pets/create-pet"
+      method="post"
+      enctype="multipart/form-data"
+      class="pet-info-form"
+    >
+      <input
+        type="text"
+        placeholder="Pet Name"
+        name="pet_name"
+        class="pet-name"
+      />
+      <input type="text" placeholder="Species" name="species" class="species" />
+      <input type="text" placeholder="Breed" name="breed" class="breed" />
+      <input type="text" placeholder="Color" name="color" class="color" />
+      <input
+        type="text"
+        placeholder="When Encountered"
+        name="when_encounter"
+        class="when-encounter"
+      />
+      <input type="file" name="photo" accept="image/png, image/jpg" />
+
+      <button type="submit">Create Pet</button>
+    </form>
+    </div>
+</body>
+</html>
+

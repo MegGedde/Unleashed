@@ -1,43 +1,55 @@
-// import all models
-const Post = require('./Post');
+
 const User = require('./User');
+const Post = require('./Post');
+const Comment = require('./Comment');
+const Pet = require('./Pet');
+const Seen = require('./Seen');
 
-
-// create associations
 User.hasMany(Post, {
-  foreignKey: 'user_id'
-});
+    foreignKey: 'user_id'
+  });
 
 Post.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
+User.hasMany(Pet, {
+    foreignKey: 'user_id',
+});
+
+Pet.belongsTo(User, {
+    foreignKey: 'user_id',
+});
+
+Pet.hasMany(Post, {
+  foreignKey: 'pet_id',
+});
+
+Post.belongsTo(Pet, {
+  foreignKey: 'pet_id'
+});
+
+Comment.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-User.belongsToMany(Post, {
-    through: Vote,
-    as: 'voted_posts',
-    foreignKey: 'user_id'
-  });
-  
-Post.belongsToMany(User, {
-    through: Vote,
-    as: 'voted_posts',
-    foreignKey: 'post_id'
-  });
-  
-  Vote.belongsTo(User, {
-    foreignKey: 'user_id'
-  });
-  
-  Vote.belongsTo(Post, {
-    foreignKey: 'post_id'
-  });
-  
-  User.hasMany(Vote, {
-    foreignKey: 'user_id'
-  });
-  
-  Post.hasMany(Vote, {
-    foreignKey: 'post_id'
-  });
+Comment.belongsTo(Post, {
+  foreignKey: 'post_id'
+});
 
-module.exports = { User, Post};
+User.hasMany(Comment, {
+  foreignKey: 'user_id'
+});
+
+Post.hasMany(Comment, {
+  foreignKey: 'post_id'
+});
+
+
+Seen.belongs(Pet, {
+  foreignKey: 'pet_id'
+});
+
+module.exports = { User, Post, Comment, Pet, Seen };
+
+
