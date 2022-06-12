@@ -78,7 +78,8 @@ router.post('/', (req, res) => {
         last_seen_state: req.body.last_seen_state,
         last_seen_country: req.body.last_seen_country,
         //can change to req.session.user_id if using sessions
-        user_id: req.body.user_id
+        user_id: req.body.user_id,
+        pet_id: req.body.pet_id
     })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {

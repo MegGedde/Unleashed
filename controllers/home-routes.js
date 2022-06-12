@@ -2,7 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment, Pet } = require('../models');
 
-router.get('/', (req, res) => {
+router.get('/home', (req, res) => {
     Post.findAll({
         attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
             include: [
@@ -15,6 +15,9 @@ router.get('/', (req, res) => {
                 attributes: ['username']
               }
             ]
+          })
+          .then(dbPostData => {
+            res.json(dbPostData)
           })
           .catch(err => {
             console.log(err);
