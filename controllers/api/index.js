@@ -1,12 +1,11 @@
 const router = require('express').Router();
-
-const petRoutes = require('./pet-routes')
-router.use('/pets', petRoutes)
-
-
 const postRoutes = require('./post-routes');
+const petRoutes = require('./pet-routes');
+const userRoutes = require('./user-routes');
 
+router.use('/pets', petRoutes);
 router.use('/posts', postRoutes);
+router.use('/user', userRoutes);
 
 module.exports = router;
 
