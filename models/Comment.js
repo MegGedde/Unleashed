@@ -28,18 +28,18 @@ Comment.init(
           }
         },
         lastseen: { 
-          type: DataTypes.TEXT, 
+          type: DataTypes.STRING, 
           allowNull: false,
         },
         user: {
-          type: DataTypes.TEXT,
+          type: DataTypes.STRING,
           allowNull: false,
         },
         comment: {
-          type: DataTypes.TEXT,
+          type: DataTypes.STRING,
         },
         pinned: {
-          type: DataTypes.TEXT,
+          type: DataTypes.BOOLEAN,
         },
       },  
     {

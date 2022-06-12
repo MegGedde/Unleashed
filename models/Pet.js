@@ -18,12 +18,10 @@ Pet.init(
       species: {
         type: DataTypes.STRING,
         allowNull: false,
-        //add list of choices instead of open string
       },
       breed: {
         type: DataTypes.STRING,
         allowNull: false,
-        //add list of choices instead of open string
       },
       color: {
         type: DataTypes.STRING,
@@ -34,15 +32,17 @@ Pet.init(
         allowNull: false
       },
       photo: {
-      //figure out how to add photo
+      type: DataTypes.STRING,
+      allowNull: false
       },
-      user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'user',
-          key: 'id'
-        }
-      }
+      // I will uncomment once USER is all ready to go
+      // user_id: {
+      //   type: DataTypes.INTEGER,
+      //   references: {
+      //     model: 'user',
+      //     key: 'id'
+      //   }
+      // }
     },
     {
       sequelize,
