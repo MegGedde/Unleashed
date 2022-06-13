@@ -27,7 +27,7 @@ Comment.init(
             key: 'id'
           }
         },
-        lastseen: { 
+        last_seen: { 
           type: DataTypes.STRING, 
           allowNull: false,
         },
@@ -38,9 +38,10 @@ Comment.init(
         comment: {
           type: DataTypes.STRING,
         },
-        pinned: {
-          type: DataTypes.BOOLEAN,
-        },
+        // not sure if the pinned is a needed feature?
+     //   pinned: {
+      //    type: DataTypes.BOOLEAN,
+     //   },
       },  
     {
       sequelize,

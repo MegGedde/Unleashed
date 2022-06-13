@@ -26,7 +26,11 @@
     "mysql2": "^2.3.3",
     "sequelize": "^6.20.1",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "stack": "^0.1.0"
+=======
+    "util.promisify": "^1.1.1"
+>>>>>>> 4fd8593dafadd4ba874cac72b576c3d8a274d323
 =======
     "util.promisify": "^1.1.1"
 >>>>>>> 4fd8593dafadd4ba874cac72b576c3d8a274d323
