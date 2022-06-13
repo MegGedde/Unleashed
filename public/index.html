@@ -5,115 +5,144 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unleashed</title>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> -->
-  <link rel="stylesheet" href="./stylesheets/style copy.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="./stylesheets/style.css" />
 </head>
 
 <body>
   <!-- HEADER -->
-  <header>
-    <div>
-      <h1>UNLEASHED</h1>
-      <h2>subtitle</h2>
+  <header class="has-background-grey-lighter">
+    <div class="has-text-centered">
+      <h1 class="is-size-1 has-text-danger-dark">UNLEASHED</h1>
+      <h2 class="has-text-danger-dark">subtitle</h2>
     </div>
     <!-- NAV BAR -->
-    <nav>
-      <button>Home</button>
-      <button>Dashboard</button>
-      <button>Log Out</button>
-      <button>Log In</button>
-    </nav>
+    <div>
+      <nav>
+        <button>Home</button>
+        <button class="ml-6">Dashboard</button>
+        <button class="ml-6">Log Out</button>
+        <button class="ml-6">Log In</button>
+      </nav>
+    </div>
   </header>
 
-  <!-- ================================== -->
-
   <!-- QUICK FILTER -->
-  <section>
+  <section class="has-text-centered">
     <button>Dogs</button>
     <button>Cats</button>
     <button>Reptile</button>
     <button>Others</button>
-  </section>
+  </section> <br> <br>
 
   <!-- SEARCH BAR FORM -->
-  <form>
-    <input type="text" placeholder="Search...">
-    <button>[icon]</button>
-  </form>
-
-  <!-- ================================== -->
+  <div class="columns is-mobile is-centered">
+    <form class="box has-background-grey-lighter">
+      <input type="text" placeholder="Search...">
+      <button>[icon]</button>
+    </form>
+  </div>
 
   <!-- LOG IN FORM -->
-  <form>
-    <div>
-      <input type="text" placeholder="Username">
-      <input type="password" placeholder="Password">
-      <a>Forgot password?</a>
-    </div>
-    <button>Log In</button>
-  </form>
+  <div class="columns is-mobile is-centered">
+    <form class="box has-background-grey-lighter">
+      <div>
+        <label>Username</label>
+        <div>
+          <input type="text" placeholder="email address">
+        </div>
+      </div>
+      <div>
+        <div>
+          <label>Password</label>
+        </div>
+        <input type="password" placeholder="*******"> <br>
+        <a>Forgot password?</a>
+      </div>
+      <button>Log In</button>
+    </form>
+  </div>
 
   <!-- SIGN UP FORM -->
-  <form>
-    <div>
-      <input type="text" placeholder="Username">
-      <input type="email" placeholder="Email">
-      <input type="number" placeholder="Primary Phone">
-      <input type="number" placeholder="Secondary Phone">
-      <select>
-        <option>Prefered Contact</option>
-        <option>Other</option>
-      </select>
-    </div>
-    <button>Sign Up</button>
-  </form>
-
-  <!-- ================================== -->
+  <div class="columns is-mobile is-centered">
+    <form class="box has-background-grey-lighter">
+      <div>
+        <div>
+          <label>First Name</label>
+          <input type="text" placeholder="">
+          <label>Last Name</label>
+          <input type="text" placeholder="">
+        </div> <br>
+        <div>
+          <label>Email Address</label>
+          <input type="email" placeholder="e.g. alex@example.com">
+        </div> <br>
+        <div>
+          <label>Primary Phone</label>
+          <input type="number" placeholder="Primary Phone">
+          <label>Secondary Phone</label>
+          <input type="number" placeholder="Secondary Phone">
+          <label>Prefered Contact</label>
+          <select>
+            <option>Phone</option>
+            <option>Email</option>
+          </select>
+        </div><br>
+      </div>
+      <button>Sign Up</button>
+    </form>
+  </div>
 
   <!-- PET INFO FORM -->
-  <form>
-    <h3>Pet Info Form</h3>
+  <div class="columns is-mobile is-centered">
+  <form class="box has-background-grey-lighter">
+    <div>
+      <h3 class="has-text-centered has-text-weight-bold">Pet Info Form</h3>
 
-    <!-- PET DESCRIPTION -->
-    <article>
-      <h4>Pet Description</h4>
-      <div>
-        <label>Upload a Photo</label>
-        <input type="file" placeholder="Upload a Photo">
-        <label>*Name</label>
-        <input type="text" placeholder="John">
-        <label>Age</label>
-        <input type="text" placeholder="1 year 2 months">
-        <!-- COLOR SECTION -->
-        <label>*Color</label>
-        <input type="text" placeholder="TX">
-        <label>*Type</label>
-        <input type="text" placeholder="Dog">
-        <label>Breed</label>
-        <input type="text" placeholder="Husky">
-      </div>
-    </article>
+      <!-- PET DESCRIPTION -->
+      <article>
+        <h4 class="has-text-weight-semibold">Pet Description:</h4><br>
+        <div>
+          <div>
+            <label>Upload a Photo</label>
+            <input type="file" placeholder="Upload a Photo">
+          </div><br>
+          <div>
+            <label>*Name</label>
+            <input type="text" placeholder="John">
+            <label>Age</label>
+            <input type="text" placeholder="1 year 2 months">
+          </div><br>
+          <div>
+            <!-- COLOR SECTION -->
+            <label>*Color</label>
+            <input type="text" placeholder="TX">
+            <label>*Type</label>
+            <input type="text" placeholder="Dog">
+            <label>Breed</label>
+            <input type="text" placeholder="Husky">
+          </div><br>
+        </div><br>
+      </article>
 
-    <!-- ADDITIONAL INFORMATION -->
-    <article>
-      <h4>Additional Information</h4>
-      <div>
-        <label>Unique features?</label>
-        <input type="text" placeholder="....">
-        <label>What to do if found?</label>
-        <input type="text" placeholder="...">
-        <label>How to home?</label>
-        <input type="text" placeholder="...">
-        <label>Known medical issues?</label>
-        <input type="text" placeholder="...">
-      </div>
-    </article>
-
-    <button>Save Your Pet</button>
+      <!-- ADDITIONAL INFORMATION -->
+      <article>
+        <h4 class="has-text-weight-semibold">Additional Information:</h4><br>
+        <div>
+          <label>Unique features?</label>
+          <input type="text" placeholder="....">
+          <label>What to do if found?</label>
+          <input type="text" placeholder="...">
+          <label>How to home?</label>
+          <input type="text" placeholder="...">
+          <label>Known medical issues?</label>
+          <input type="text" placeholder="...">
+        </div>
+        <button>Save</button>
+      </article>
+    </div>
   </form>
-
-  <!-- ================================== -->
-  <!-- COMMENT -->
+</div>
 
   <!-- POST A COMMENT FORM -->
   <form>
@@ -138,154 +167,13 @@
         <label>*Zip Code</label>
         <input type="number" placeholder="12345">
       </div>
-    </article>
-    <button>Post</button>
-  </form>
-
-  <!-- COMMENT POST -->
-  <form>
-    <!-- COMMENT HEADER INFO -->
-    <div>
-      <h3>username</h3>
-      <p>1 day ago</p>
-      <span>[pin icon]</span>
-    </div>
-    <!-- COMMENT MESSAGE -->
-    <div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.</p>
-    </div>
-    <!-- LAST SEEN FORM -->
-    <form>
-      <article>
-        <h4>Last Seen Info</h4>
-        <ul>
-          <li><label>Time:</label>
-            <p>...</p>
-          </li>
-          <li><label>Street:</label>
-            <p>...</p>
-          </li>
-          <li><label>City:</label>
-            <p>...</p>
-          </li>
-          <li><label>State:</label>
-            <p>...</p>
-          </li>
-          <li><label>Country:</label>
-            <p>...</p>
-          </li>
-          <li><label>Zip Code:</label>
-            <p>...</p>
-          </li>
-        </ul>
-      </article>
-    </form>
-  </form>
-
-  <!-- ================================== -->
-  <!-- POSTS -->
-
-  <!-- CREATE A POST FORM -->
-  <form>
-    <h3>Create A Post</h3>
-    <div>
-      <h4>Select a Pet</h4>
-      <select>
-        <option>...</option>
-        <option>Other</option>
-      </select>
-    </div>
-    <!-- LAST SEEN FORM -->
-    <article>
-      <h4>Last Seen Info</h4>
-      <div>
-        <label>Time</label>
-        <input type="time" placeholder="e.g. alex@example.com">
-        <label>Street</label>
-        <input type="text" placeholder="1234 Sesame Street">
-        <label>*City</label>
-        <input type="text" placeholder="Houston">
-        <label>*State</label>
-        <input type="text" placeholder="TX">
-        <label>*Country</label>
-        <input type="text" placeholder="USA">
-        <label>*Zip Code</label>
-        <input type="number" placeholder="12345">
-      </div>
       <!-- <button>Save</button> -->
     </article>
-    <!-- ADDITIONAL INFORMATION -->
-    <article>
-      <h4>Additional Information</h4>
-      <textarea class="textarea" placeholder="Text area..."></textarea>
-    </article>
     <button>Post</button>
-  </form>
-
-  <!-- POST FORM -->
-  <form>
-    <!-- POST HEADER INFO -->
-    <div>
-      <div>
-        <h4>username</h4>
-        <p>posted 1 day ago</p>
-      </div>
-      <h3>Pet Name</h3>
-      <p>Animal Type</p>
-
-      <!-- Details and Image -->
-      <div>
-        <ul>
-          <li><label>Age:</label>
-            <p>...</p>
-          </li>
-          <li><label>Color:</label>
-            <p>...</p>
-          </li>
-          <li><label>Breed:</label>
-            <p>...</p>
-          </li>
-        </ul>
-        <img src="https://www.w3schools.com/images/lamp.jpg" alt="lamp">
-      </div>
-
-    </div>
-
-    <!-- LAST SEEN FORM -->
-    <form>
-      <article>
-        <h4>Last Seen Info</h4>
-        <ul>
-          <li><label>Time:</label>
-            <p>...</p>
-          </li>
-          <li><label>Street:</label>
-            <p>...</p>
-          </li>
-          <li><label>City:</label>
-            <p>...</p>
-          </li>
-          <li><label>State:</label>
-            <p>...</p>
-          </li>
-          <li><label>Country:</label>
-            <p>...</p>
-          </li>
-          <li><label>Zip Code:</label>
-            <p>...</p>
-          </li>
-        </ul>
-      </article>
-    </form>
-
-    <!-- POST MESSAGE -->
-    <div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.</p>
-    </div>
 
   </form>
+
+
 
 </body>
 
