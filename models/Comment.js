@@ -7,15 +7,10 @@ Comment.init(
     {
       id: {
           type: DataTypes.INTEGER,
+          allowNull: false,
           primaryKey: true,
           autoIncrement: true
         },
-      comment_text: {
-          type: DataTypes.STRING,
-          validate: {
-              len: [1]
-          }
-      },
       user_id: {
           type: DataTypes.INTEGER,
           allowNull: false,
@@ -31,7 +26,22 @@ Comment.init(
             model: 'post',
             key: 'id'
           }
-        }
+        },
+        last_seen: { 
+          type: DataTypes.STRING, 
+          allowNull: false,
+        },
+        user: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        comment: {
+          type: DataTypes.STRING,
+        },
+        // not sure if the pinned is a needed feature?
+     //   pinned: {
+      //    type: DataTypes.BOOLEAN,
+     //   },
       },  
     {
       sequelize,
