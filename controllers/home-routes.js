@@ -69,6 +69,14 @@ router.get('/dashboard', (req, res) => {
                 }
               },
               {
+                model: Comment,
+                attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+                include: {
+                  model: User,
+                  attributes: ['username']
+                }
+              },
+              {
                 model: User,
                 attributes: ['username']
               }
@@ -91,21 +99,6 @@ router.get('/dashboard', (req, res) => {
 // ADD A PET
 router.get('/addpet', (req, res) => {
   res.render('add-pet');
-  // if (!req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }
-  // res.render('add-post', {
-  //   dashboard: true,
-  //   loggedIn: true
-  // });
-});
-
-
-// ALL POST GETS
-// ADD A POST
-router.get('/addpost', (req, res) => {
-  res.render('add-post');
   // if (!req.session.loggedIn) {
   //   res.redirect('/');
   //   return;
