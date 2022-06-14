@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     attributes: { exclude: ['password'] },
     include: {
         model: Pet,
-        attributes: ['id', 'pet_name']
+        attributes: ['id', 'pet_names']
       }
   })
     .then(dbUserData => res.json(dbUserData))

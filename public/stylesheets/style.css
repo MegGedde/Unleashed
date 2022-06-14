@@ -110,6 +110,9 @@ img {
   border-radius: 10px;
 }
 
+.posted-by, .post-link {
+  color: var(--tertiary-color);
+}
 
 
 p,
@@ -139,6 +142,10 @@ label {
   padding: 10px;
   background: var(--quinary-color);
   width: 100%;
+}
+
+.last-seen-info p{
+  font-size: 1.6rem;
 }
 
 .heading {
