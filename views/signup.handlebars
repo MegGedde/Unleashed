@@ -1,23 +1,27 @@
+<div>This is the Sign Up Page</div>
+
 <!-- SIGN UP FORM -->
-<form>
-    <div>
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
+<form class="m-4 is-flex is-flex-direction-column is-align-items-center" id="#sign-up">
+    <div class="form-header">
+        <h2>SIGN UP</h2>
     </div>
-</form>
-
-<p>This is the information that will be used to contact you about your lost pet. At least '1' must be filled.</p>
-
-<form>
-    <div>
-        <input type="text" placeholder="Username">
-        <input type="email" placeholder="Email">
-        <input type="number" placeholder="Primary Phone">
-        <input type="number" placeholder="Secondary Phone">
+    <div class="m-3">
+        <label>Username</label>
+        <input type="text" placeholder="John1234" id="username-signup">
+        <label>Password</label>
+        <input type="text" placeholder="*******" id="password-signup">
+        <label>Email Address</label>
+        <input type="email" placeholder="e.g. alex@example.com" id="email-signup">
+        <label>Primary Phone</label>
+        <input type="number" placeholder="Primary Phone" id="primary-phone-signup">
+        <label>Secondary Phone</label>
+        <input type="number" placeholder="Secondary Phone" id="secondary-phone-signup">
+        <label>Prefered Contact</label>
         <select>
-            <option>Prefered Contact</option>
-            <option>Other</option>
+            <option>Email</option>
+            <option>Primary Email</option>
+            <option>Secondary Email</option>
         </select>
     </div>
-    <button>Sign Up</button>
+    <button class="m-0 btn-generic" type="submit">Sign Up!</button>
 </form>
