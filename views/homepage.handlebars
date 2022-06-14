@@ -21,37 +21,57 @@
     </div>
 </form>
 
-<form class="m-0 columns">
-    <a href="/post/1" class="p-3 column form-header">
-        <h1>Name</h1>
-        <h3>Type: Dog</h3>
-        <h3>Age: 00</h3>
-        <h3>Color: Brown</h3>
-        <h3>Breed: Husky</h3>
+
+<form class="m-0">
+    <a href="/post/1" class="short-post">
+        <h1 class="p-2">Name</h1>
     </a>
-    <div>
-        <h2 class="heading">Last Seen information</h2>
-        <p>Street: information</p>
-        <p>City: information</p>
-        <p>State: information</p>
+    <div class="m-0 columns">
+        <div class="column form-header fill">
+            <img src="html5.gif" alt="HTML5 Icon" style="width:250px;height:250px;">
+        </div>
+        <div class="p-3 column form-header">
+            <h3>Type: Dog</h3>
+            <h3>Age: 00</h3>
+            <h3>Color: Brown</h3>
+            <h3>Breed: Husky</h3>
+        </div>
+        <div class="column">
+            <h2 class="heading">Last Seen information</h2>
+            <p>Street: information</p>
+            <p>City: information</p>
+            <p>State: information</p>
+        </div>
     </div>
-    <div class="column">
-        <img src="html5.gif" alt="HTML5 Icon" style="width:250px;height:250px;">
-    </div>
+    <p class="p-2 form-header">Posted by User on 4/20/2020</p>
 </form>
 
-{{#each posts as |post|}}
-<form>
-    <!-- POST HEADER INFO -->
-    <div class="form-header">
-        <a class="post-link" href="/post/{{post.id}}">{{post.title}}</a>
-        <h4>Posted by {{user.username}} on {{created_at}}</h4>
-    </div>
-    <!-- POST MESSAGE -->
-    <div>
-        <p>{{post.content}}</p>
+{{!-- {{#each posts as |post|}}
+<form class="m-0">
+    <a href="/post/{{post.id}}" class="short-post">
+        <h1 class="Post">{{pet.pet_name}}</h1>
+        <p>Time: {{}}</p>
+    </a>
+    <div class="m-0 columns">
+        <div class="column form-header fill">
+            <img src="{{html5.gif}}" alt="HTML5 Icon" style="width:250px;height:250px;">
+        </div>
+        <div class="p-3 column form-header">
+            <h3>Age: {{}}</h3>
+            <h3>Color: {{}}</h3>
+            <h3>Species: {{pet.species}}</h3>
+            <h3>Breed: {{pet.breed}}</h3>
+        </div>
+        <div class="column">
+            <h2 class="heading">Last Seen Info</h2>
+            <p>Time: {{}}</p>
+            <p>Street: {{}}</p>
+            <p>City: {{}}</p>
+            <p>State: {{}}</p>
+            <p>Country: {{}}</p>
+        </div>
     </div>
 </form>
-{{/each}}
+{{/each}} --}}
 
 <a href="/addpost" class="btn-addpost">+ Post A Lost Pet</a>

@@ -93,13 +93,27 @@ textarea {
   width: 100%;
 }
 
-.signup-link:hover {
+.short-post {
+  color: var(--secondary-color);
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  width: 100%;
+}
+
+.signup-link:hover, .short-post h1:hover {
   color: var(--primary-color);
 }
 
-img {
-  border: 4px solid var(--quinary-color);
-  width: auto;
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden
+}
+.fill img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%
 }
 
 .comment {
@@ -109,8 +123,6 @@ img {
   max-width: 900px;
   border-radius: 10px;
 }
-
-
 
 p,
 input,
