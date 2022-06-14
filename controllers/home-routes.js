@@ -7,7 +7,7 @@ const { Post, User, Comment, Pet } = require('../models');
 router.get('/', (req, res) => {
   console.log(req.session);
     Post.findAll({
-        attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
+        attributes: ['id', 'title', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
             include: [
               {
                 model: Pet,
@@ -20,7 +20,8 @@ router.get('/', (req, res) => {
             ]
           })
           .then(dbPostData => {
-            const posts = dbPostData.map(post => post.get({ plain: true }));     
+            const posts = dbPostData.map(post => post.get({ plain: true }));  
+            console.log(posts)   
             res.render('homepage', {
               posts,
               loggedIn: req.session.loggedIn
