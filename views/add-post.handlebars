@@ -1,3 +1,40 @@
+
+<div>
+    <h2>Please Select A Pet</h2>
+    {{#each pets as |pet|}}
+        {{> pets-of-owner pet}}
+    {{/each}}
+</div>
+
+<div>
+    <form action="/api/posts/create-post" method="post">
+
+    <label for="petPhotoId"></label>
+    <input class="pet-id" id="petPhotoId" type="text" name="pet_id" readonly="readonly">
+
+    <label for="postTitle">Please enter a title for your post</label>
+    <input id="postTilte" name="title" type="text">
+
+    <label for="lastSeenTime">When was your pet last seen?</label>
+    <input id="lastSeenTime" name="last_seen_time" type="text">
+
+    <label for="lastSeenStreet">Street</label>
+    <input id="lastSeenStreet" name="last_seen_street" type="text">
+    
+    <label for="lastSeenCity">City</label>
+    <input id="lastSeenCity" name="last_seen_city" type="text">
+    
+    <label for="lastSeenState">State</label>
+    <input id="lastSeenState" name="last_seen_state" type="text">
+
+    <label for="lastSeenCountry">Country</label>
+    <input id="lastSeenCountry" name="last_seen_country" type="text">
+
+    <button type="submit">Create Post</button>
+    </form>
+</div>
+<script src="javascript/add-post.js"></script>
+
 {{!-- <div>This is Add Post Page</div>
 <h2>Add a Pet</h2>
 <div>
@@ -76,3 +113,4 @@
     </article>
     <button class="m-0 btn-generic">Post!</button>
 </form>
+
