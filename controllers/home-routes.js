@@ -41,7 +41,22 @@ router.get('/login', (req, res) => {
     return;
   }
 
+  // error message added 
+
   res.render('login');
+  if (!dbUserData) {
+    res.status(400).json({ message: 'No user with that email address!' });
+    return;
+  }
+
+  const validPassword = dbUserData.checkPassword(req.body.password);
+
+  if (!validPassword) {
+    res.status(400).json({ message: 'Incorrect password!' });
+    return;
+  }
+
+  res.json({ user: dbUserData, message: 'You are now logged in!' });
 });
 
 router.get('/signup', (req, res) => {
@@ -53,6 +68,8 @@ router.get('/signup', (req, res) => {
     console.log('error signing up')
   }
   res.render('signup');
+
+
 });
 
 // DASHBOARD
