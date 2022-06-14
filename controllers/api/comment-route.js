@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
             res.status(500).json(err);
         });
 });
-
+// post comments 
 router.post('/', withAuth, (req, res) => {
     // expects => { comment_text}
     Comment.create({
@@ -24,7 +24,7 @@ router.post('/', withAuth, (req, res) => {
             res.status(400).json(err);
         });
 });
-
+// delete comments
 router.delete('/:id', withAuth, (req, res) => {
     Comment.destroy({
         where: {
