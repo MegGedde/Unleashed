@@ -136,6 +136,8 @@ label {
   font-size: var(--font-size-sm);
 }
 
+
+
 .comment-header {
   padding: 10px;
   background: var(--quinary-color);
@@ -230,4 +232,7 @@ button:hover {
 .btn-nav:hover {
   color: var(--primary-color);
   background: none;
+}
+.btn-delete {
+  background-color: var(--primary-color);
 }
