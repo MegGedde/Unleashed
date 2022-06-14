@@ -1,4 +1,4 @@
-<div>This is the Homepage</div>
+
 
 <!-- QUICK FILTER -->
 <form class="m-4 quick-search-form">
@@ -21,37 +21,12 @@
     </div>
 </form>
 
-<form class="m-0 columns">
-    <a href="/post/1" class="p-3 column form-header">
-        <h1>Name</h1>
-        <h3>Type: Dog</h3>
-        <h3>Age: 00</h3>
-        <h3>Color: Brown</h3>
-        <h3>Breed: Husky</h3>
-    </a>
-    <div>
-        <h2 class="heading">Last Seen information</h2>
-        <p>Street: information</p>
-        <p>City: information</p>
-        <p>State: information</p>
-    </div>
-    <div class="column">
-        <img src="html5.gif" alt="HTML5 Icon" style="width:250px;height:250px;">
-    </div>
-</form>
 
 {{#each posts as |post|}}
-<form>
-    <!-- POST HEADER INFO -->
-    <div class="form-header">
-        <a class="post-link" href="/post/{{post.id}}">{{post.title}}</a>
-        <h4>Posted by {{user.username}} on {{created_at}}</h4>
-    </div>
-    <!-- POST MESSAGE -->
-    <div>
-        <p>{{post.content}}</p>
-    </div>
-</form>
+
+    {{> post-info post}}
+
+
 {{/each}}
 
 <a href="/addpost" class="btn-addpost">+ Post A Lost Pet</a>
