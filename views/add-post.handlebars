@@ -1,3 +1,4 @@
+
 <div>
     <h2>Please Select A Pet</h2>
     {{#each pets as |pet|}}
@@ -33,3 +34,83 @@
     </form>
 </div>
 <script src="javascript/add-post.js"></script>
+
+{{!-- <div>This is Add Post Page</div>
+<h2>Add a Pet</h2>
+<div>
+    <form action="/api/pets/create-pet" method="post" enctype="multipart/form-data">
+        <input name="pet_name" type="text" placeholder="Pet Name">
+        <input name="pet_age" min="0" max="25" type="number" placeholder="Pet Age">
+        <select name="species" id="">
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="reptile">Reptile</option>
+            <option value="other">Other</option>
+        </select>
+        <input name="breed" type="text" placeholder="Breed">
+        <input name="color" type="text" placeholder="Color">
+        <input name="unique_features" type="text"
+            placeholder="Please enter any unique features this pet has (optional)">
+        <input name="when_encounter" type="text" placeholder="What to do when encountered">
+        <label for="photo">Upload a photo of the pet</label>
+        <input name="photo" type="file" accept="image/png, image/jpg">
+        <button type="submit">Create Pet</button>
+    </form>
+</div> --}}
+
+<!-- PET INFO FORM -->
+<form class="m-4">
+    <div class="form-header">
+        <h2>ADD A POST FORM</h2>
+    </div>
+    <!-- PET DESCRIPTION -->
+    <h3>Pet Description</h3>
+    <article class="m-4">
+        <div>
+            <label>Select a Pet</label>
+            <select>
+                <option>N/A</option>
+            </select>
+        </div>
+        <label>Upload a Photo</label>
+        <input type="file" placeholder="Upload a Photo">
+        <label>Name</label>
+        <input type="text" placeholder="John">
+        <label>Age</label>
+        <input type="text" placeholder="1 year 2 months">
+        <label>Color</label>
+        <input type="text" placeholder="Brown">
+        <label>Type</label>
+        <input type="text" placeholder="Dog">
+        <label>Breed</label>
+        <input type="text" placeholder="Husky">
+    </article>
+    <h3>Additional Information</h3>
+    <!-- ADDITIONAL INFORMATION -->
+    <article class="m-4">
+        <label>Unique features?</label>
+        <input type="text" placeholder="....">
+        <label>What to do if found?</label>
+        <input type="text" placeholder="...">
+        <label>How to home?</label>
+        <input type="text" placeholder="...">
+        <label>Known medical issues?</label>
+        <input type="text" placeholder="...">
+    </article>
+    {{!-- LAST SEEN INFO --}}
+    <h3>Last Seen Info</h3>
+    <article class="m-3">
+        <label>Time</label>
+        <input type="time">
+        <label>Street</label>
+        <input type="text" placeholder="1234 Sesame Street">
+        <label>City</label>
+        <input type="text" placeholder="Houston">
+        <label>State</label>
+        <input type="text" placeholder="TX">
+        <label>Country</label>
+        <input type="text" placeholder="USA">
+    </article>
+    <button class="m-0 btn-generic">Post!</button>
+</form>
+
