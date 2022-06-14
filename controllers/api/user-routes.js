@@ -6,9 +6,9 @@ router.get('/', (req, res) => {
   User.findAll({
     attributes: { exclude: ['password'] },
     include: {
-        model: Pet,
-        attributes: ['id', 'pet_names']
-      }
+      model: Pet,
+      attributes: ['id', 'pet_name']
+    }
   })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -50,6 +50,13 @@ router.post('/', (req, res) => {
     password: req.body.password
   })
     .then(dbUserData => res.json(dbUserData))
+    .then(dbUserData => {
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+      });
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -59,11 +66,11 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
-      email: req.body.email
+      username: req.body.username
     }
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
+      res.status(400).json({ message: 'No user with that username!' });
       return;
     }
 
@@ -73,8 +80,13 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
-
-    res.json({ user: dbUserData, message: 'You are now logged in!' });
+    req.session.save(() => {
+      // declare session variables
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
   });
 });
 
