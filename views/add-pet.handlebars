@@ -1,0 +1,73 @@
+<div>
+   
+    <form class="m-4" action="/api/pets/create-pet" method="post" enctype="multipart/form-data">
+     <div class="form-header">
+        <h2>ADD A PET FORM</h2>
+    </div>
+    <h3>Pet Description:</h3>
+        <article class="m-4">
+            <label for="petName">*Name</label>
+            <input id="petName"  name="pet_name" type="text" placeholder="Pet Name">
+            <label for="petAge">Age</label>
+            <input id="petAge" name="pet_age" min="0" max="25" type="number" placeholder="Pet Age">
+            <select class="is-flex p-2 box my-2" name="species" id="">
+                <option value="" disabled selected>Pet Species</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="reptile">Reptile</option>
+                <option value="other">Other</option>
+            </select>
+            <label for="petBreed">Breed</label>
+            <input id="petBrred" name="breed" type="text" placeholder="Breed">
+            <label for="petColor">Color</label>
+            <input id="petColor" name="color" type="text" placeholder="Color">
+            <label for="petUniqueFeatures">Does this pet have any unique features?</label>
+            <input id="petUniqueFeatures" name="unique_features" type="text" placeholder="...">
+            <label for="petWhenEncounter">What to do when encountered?</label>
+            <input id="petWhenEncounter" name="when_encounter" type="text" placeholder="...">
+            
+            <label for="uploadPhoto">Upload a photo</label>
+            <input id="uploadPhoto" name="photo" type="file" accept="image/png, image/jpg">
+            <button class="btn-generic m-0" type="submit">Create Pet</button>
+        </article>
+    </form>
+</div>
+
+
+<!-- PET INFO FORM -->
+
+{{!-- <form>
+    <div class="form-header">
+        <h2>ADD A PET FORM</h2>
+    </div>
+    <!-- PET DESCRIPTION -->
+    <h3>Pet Description:</h3>
+    <article class="m-4">
+        <label>Upload a Photo</label>
+        <input type="file" placeholder="Upload a Photo">
+        <label>Name</label>
+        <input type="text" placeholder="John">
+        <label>Age</label>
+        <input type="text" placeholder="1 year 2 months">
+        <!-- COLOR SECTION -->
+        <label>Color</label>
+        <input type="text" placeholder="Brown">
+        <label>Species</label>
+        <input type="text" placeholder="Dog">
+        <label>Breed</label>
+        <input type="text" placeholder="Husky">
+    </article>
+    <h3>Additional Information:</h3>
+    <!-- ADDITIONAL INFORMATION -->
+    <article class="m-4">
+        <label>Unique features?</label>
+        <input type="text" placeholder="....">
+        <label>What to do if found?</label>
+        <input type="text" placeholder="...">
+        <label>How to home?</label>
+        <input type="text" placeholder="...">
+        <label>Known medical issues?</label>
+        <input type="text" placeholder="...">
+    </article>
+    <button class="m-0 btn-generic">Save</button>
+</form> --}}

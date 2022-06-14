@@ -15,15 +15,17 @@ Pet.init(
         type: DataTypes.STRING,
         allowNull: false
       },
+      pet_age: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
       species: {
         type: DataTypes.STRING,
         allowNull: false,
-        //add list of choices instead of open string
       },
       breed: {
         type: DataTypes.STRING,
         allowNull: false,
-        //add list of choices instead of open string
       },
       color: {
         type: DataTypes.STRING,
@@ -34,8 +36,14 @@ Pet.init(
         allowNull: false
       },
       photo: {
-      //figure out how to add photo
+      type: DataTypes.STRING,
+      allowNull: false
       },
+      unique_features : {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      // I will uncomment once USER is all ready to go
       user_id: {
         type: DataTypes.INTEGER,
         references: {

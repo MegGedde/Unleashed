@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unleashed</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div>
+      <h1>UNLEASHED</h1>
+      <h2>"Bring Back The Lost"</h2>
+    </div>
+    <!-- NAV BAR -->
+    <nav>
+      <a href="/" class="btn-nav">Home</a>
+      {{#if loggedIn}}
+      <a href="/dashboard"class="btn-nav">Dashboard</a>
+      <button class="btn-nav" id="logout">Log Out</button>
+      {{else}}
+      <a href="/login" class="btn-nav">Log In</a>
+      {{/if}}
+    </nav>
+  </header>
+
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
+
+    <main class="container is-flex is-flex-direction-column is-align-items-center">
+        {{{body}}}
+    </main>    
+</body>
+
+</html>
