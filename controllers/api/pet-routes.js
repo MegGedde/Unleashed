@@ -15,11 +15,14 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'pet_name',
+            'pet_age',
             'species',
             'breed',
             'color',
             'when_encounter',
-            'photo'
+            'unique_features',
+            'photo',
+            'user_id'
         ]
     })
     .then(dbPetData => {
@@ -39,11 +42,14 @@ router.get('/:id', (req, res) => {
         attributes: [
             'id',
             'pet_name',
+            'pet_age',
             'species',
             'breed',
             'color',
             'when_encounter',
-            'photo'
+            'photo',
+            'user_id'
+
         ]    
     })
     .then(dbPetData => {
@@ -59,12 +65,14 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Pet.create({
         pet_name: req.body.pet_name,
+        pet_age: req.body.pet_age,
         species: req.body.species,
         breed: req.body.breed,
         color: req.body.color,
         when_encounter: req.body.when_encounter,
-        photo: req.body.photo
-                // user_id: req.body.user_id
+        photo: req.body.photo,
+        unique_features: req.body.unique_features,
+        user_id: req.body.user_id
     })
     .then(dbPetData => {
         res.json(dbPetData)
@@ -129,23 +137,28 @@ router.post('/create-pet', upload.single('photo'), async (req, res) => {
 
     // Grab form data
     const petName = req.body.pet_name
+    const petAge = req.body.pet_age
     const petSpecies = req.body.species
     const petBreed = req.body.breed
     const petColor = req.body.color
     const petWhenEncounter = req.body.when_encounter
     const petPhoto = result.Key
+    const petUniqueFeatures = req.body.unique_features
 
     // Removes file from 'uploads' directory
     await removeFile(file.path)
-    res.redirect(`/api/pets/images/${result.Key}`)
+    // res.redirect(`/api/pets/images/${result.Key}`)
+    res.redirect('/')
 
     // Insert form data to create a new pet
     Pet.create({
         pet_name: petName,
+        pet_age: petAge,
         species: petSpecies,
         breed: petBreed,
         color: petColor,
         when_encounter: petWhenEncounter,
+        unique_features: petUniqueFeatures,
         photo: petPhoto
                 // user_id: req.body.user_id
     })
@@ -156,3 +169,5 @@ router.post('/create-pet', upload.single('photo'), async (req, res) => {
   })
 
 module.exports = router
+
+

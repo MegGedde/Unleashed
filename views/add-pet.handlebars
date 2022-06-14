@@ -1,1 +1,20 @@
-<div>This is Add Pet Page</div>
+<h2>Add a Pet</h2>
+<div>
+    <form action="/api/pets/create-pet" method="post" enctype="multipart/form-data">
+        <input name="pet_name" type="text" placeholder="Pet Name">
+        <input name="pet_age" min="0" max="25" type="number" placeholder="Pet Age">
+        <select name="species" id="">
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="reptile">Reptile</option>
+            <option value="other">Other</option>
+        </select>
+        <input name="breed" type="text" placeholder="Breed">
+        <input name="color" type="text" placeholder="Color">
+        <input name="unique_features" type="text" placeholder="Please enter any unique features this pet has (optional)">
+        <input name="when_encounter" type="text" placeholder="What to do when encountered">
+        <label for="photo">Upload a photo of the pet</label>
+        <input name="photo" type="file" accept="image/png, image/jpg">
+        <button type="submit">Create Pet</button>
+    </form>
+</div>
