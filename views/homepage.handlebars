@@ -1,0 +1,31 @@
+<div>This is the Homepage</div>
+
+<!-- QUICK FILTER -->
+<form class="m-4 quick-search-form">
+    <div class="form-header">
+        <h2>QUICK FILTERS</h2>
+    </div>
+    <div class="m-1 is-flex is-justify-content-center columns">
+        <button class="column">Dogs</button>
+        <button class="column">Cats</button>
+        <button class="column">Reptile</button>
+        <button class="column">Others</button>
+    </div>
+</form>
+
+<!-- SEARCH BAR FORM -->
+<form class="m-4 search-form">
+    <div class="m-2 columns">
+        <input class="m-2 column is-three-quarters" type="text" placeholder="Search...">
+        <button class="m-2 column">On the Prowl!</button>
+    </div>
+</form>
+
+{{!-- POSTS DISPLAY --}}
+<div>
+    {{#each posts as |post|}}
+    {{> post-info post }}
+    {{/each}}
+</div>
+
+<a href="/addpost" class="btn-addpost">+ Post A Lost Pet</a>
