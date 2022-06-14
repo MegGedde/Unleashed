@@ -19,22 +19,23 @@
     <!-- NAV BAR -->
     <nav>
       <a href="/" class="btn-nav">Home</a>
-      {{!-- {{#if loggedIn}} --}}
+      {{#if loggedIn}}
       <a href="/dashboard"class="btn-nav">Dashboard</a>
       <button class="btn-nav" id="logout">Log Out</button>
-      {{!-- {{else}} --}}
+      {{else}}
       <a href="/login" class="btn-nav">Log In</a>
-      {{!-- {{/if}} --}}
+      {{/if}}
     </nav>
   </header>
 
     {{#if loggedIn}}
-    <script src="/javascript/logout.js"></script>
+    <script src="javascript/logout.js"></script>
     {{/if}}
 
     <main class="container is-flex is-flex-direction-column is-align-items-center">
         {{{body}}}
-    </main>    
+    </main>   
+
 </body>
 
 </html>

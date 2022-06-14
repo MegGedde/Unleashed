@@ -11,13 +11,13 @@ router.get('/', (req, res) => {
           model: Pet,
           attributes: ['pet_name', 'species', 'breed', 'color']
         },
-        {
-          model: Comment,
-          attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
-          include: {
-          model: User,
-          attributes: ['username']
-     }   },
+    //     {
+    //       model: Comment,
+    //       attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+    //       include: {
+    //       model: User,
+    //       attributes: ['username']
+    //  }   },
 
         {
           model: User,
@@ -42,15 +42,15 @@ router.get('/:id', (req, res) => {
       include: [
         {
             model: Pet,
-            attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter']
+            attributes: ['pet_name', 'pet_age', 'species', 'breed', 'color', 'when_encounter']
           },
-          {
-            model: Comment,
-            attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
-            include: {
-            model: User,
-            attributes: ['username']
-       }   },
+      //     {
+      //       model: Comment,
+      //       attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+      //       include: {
+      //       model: User,
+      //       attributes: ['username']
+      //  }   },
           {
             model: User,
             attributes: ['username']
@@ -73,15 +73,38 @@ router.get('/:id', (req, res) => {
   //create a post
 router.post('/', (req, res) => {
     Post.create({
+        title: req.body.title,
         last_seen_time: req.body.last_seen_time,
         last_seen_street: req.body.last_seen_street,
         last_seen_city: req.body.last_seen_city,
         last_seen_state: req.body.last_seen_state,
         last_seen_country: req.body.last_seen_country,
-        //user_id: req.session.user_id
-        // user_id: req.body.id
+        user_id: req.body.user_id,
+        pet_id: req.body.pet_id
     })
     .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+
+// NEW POST
+router.post('/create-post', (req, res) => {
+  console.log('hi', req.body)
+  res.redirect('/')
+    Post.create({
+        title: req.body.title,
+        last_seen_time: req.body.last_seen_time,
+        last_seen_street: req.body.last_seen_street,
+        last_seen_city: req.body.last_seen_city,
+        last_seen_state: req.body.last_seen_state,
+        last_seen_country: "usa",
+        user_id: req.session.user_id,
+        pet_id: req.body.pet_id
+    })
+    // .then(dbPostData => res.json(dbPostData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);

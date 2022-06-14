@@ -1,7 +1,7 @@
 <div>This is the Sign Up Page</div>
 {message: req.flash(‘error’)}
 <!-- SIGN UP FORM -->
-<form class="m-4 is-flex is-flex-direction-column is-align-items-center" id="#sign-up">
+<form class="m-4 is-flex is-flex-direction-column is-align-items-center login-form" id="#sign-up">
     <div class="form-header">
         <h2>SIGN UP</h2>
     </div>
@@ -9,7 +9,7 @@
         <label>Username</label>
         <input type="text" placeholder="John1234" id="username-signup">
         <label>Password</label>
-        <input type="text" placeholder="*******" id="password-signup">
+        <input type="password" placeholder="*******" id="password-signup">
         <label>Email Address</label>
         <input type="email" placeholder="e.g. alex@example.com" id="email-signup">
         <label>Primary Phone</label>
@@ -25,3 +25,4 @@
     </div>
     <button class="m-0 btn-generic" type="submit">Sign Up!</button>
 </form>
+    <script src="javascript/signup.js"></script> 
