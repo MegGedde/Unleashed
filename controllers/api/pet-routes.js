@@ -10,7 +10,7 @@ const promisify = require('util.promisify')
 const removeFile = promisify(fs.unlink)
 
 // Get all pets 
-router.get('/', (req, res) => {
+router.get('/all', (req, res) => {
     Pet.findAll({
         attributes: [
             'id',
@@ -23,10 +23,41 @@ router.get('/', (req, res) => {
             'unique_features',
             'photo',
             'user_id'
-        ]
+        ],
+        
     })
     .then(dbPetData => {
+        
         res.json(dbPetData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+})
+// Get all pets 
+router.get('/', (req, res) => {
+    console.log(req.query.name)
+    Pet.findAll({
+        attributes: [
+            'id',
+            'pet_name',
+            'pet_age',
+            'species',
+            'breed',
+            'color',
+            'when_encounter',
+            'unique_features',
+            'photo',
+            'user_id'
+        ],
+        where: {
+            pet_name: req.query.name
+        }
+    })
+    .then(dbPetData => {
+        const petIdData = (dbPetData[0].dataValues.id)
+        res.json(petIdData)
     })
     .catch(err => {
         console.log(err);
@@ -42,13 +73,7 @@ router.get('/:id', (req, res) => {
         attributes: [
             'id',
             'pet_name',
-            'pet_age',
-            'species',
-            'breed',
-            'color',
-            'when_encounter',
-            'photo',
-            'user_id'
+            'photo'
 
         ]    
     })
@@ -60,6 +85,27 @@ router.get('/:id', (req, res) => {
         res.status(500).json(err);
       });
 })
+// Get a pet by USERNAME
+// router.get('/', (req, res) => {
+//     Pet.findOne({
+//         where: {
+//             pet_name: req.query.name
+//         },
+//         attributes: [
+//             'id',
+//             'pet_name',
+//             'photo'
+
+//         ]    
+//     })
+//     .then(dbPetData => {
+//         res.json(dbPetData)
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+// })
 
 // Create a pet
 router.post('/', (req, res) => {
@@ -159,8 +205,8 @@ router.post('/create-pet', upload.single('photo'), async (req, res) => {
         color: petColor,
         when_encounter: petWhenEncounter,
         unique_features: petUniqueFeatures,
-        photo: petPhoto
-                // user_id: req.body.user_id
+        photo: petPhoto,
+        user_id: req.session.user_id
     })
     .catch(err => {
         console.log(err);

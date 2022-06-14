@@ -1,6 +1,7 @@
 <div>This is the Login Page</div>
+{message: req.flash(‘error’)}
 <!-- LOG IN FORM -->
-<form class="m-4 is-flex is-flex-direction-column is-align-items-center" id="#login-form">
+<form class="m-4 is-flex is-flex-direction-column is-align-items-center login-form" id="#login-form">
   <div class="form-header">
     <h2>LOGIN</h2>
   </div>
@@ -13,3 +14,4 @@
   <button class="m-0 btn-generic" type="submit">Log In</button>
 </form>
 <a href="/signup" class="signup-link">Want to Sign Up?</a>
+<script src="javascript/login.js"></script>

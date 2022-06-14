@@ -11,6 +11,10 @@ Post.init(
         primaryKey: true,
         autoIncrement: true
       },
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       last_seen_time: {
         type: DataTypes.STRING,
         allowNull: false
