@@ -4,6 +4,9 @@ const Post = require('./Post');
 const Comment = require('./Comment');
 const Pet = require('./Pet');
 
+// const Seen = require('./Seen');
+
+
 User.hasMany(Post, {
     foreignKey: 'user_id'
   });

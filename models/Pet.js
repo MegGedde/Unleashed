@@ -15,6 +15,10 @@ Pet.init(
         type: DataTypes.STRING,
         allowNull: false
       },
+      pet_age: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
       species: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -35,14 +39,18 @@ Pet.init(
       type: DataTypes.STRING,
       allowNull: false
       },
+      unique_features : {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
       // I will uncomment once USER is all ready to go
-      // user_id: {
-      //   type: DataTypes.INTEGER,
-      //   references: {
-      //     model: 'user',
-      //     key: 'id'
-      //   }
-      // }
+      user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'user',
+          key: 'id'
+        }
+      }
     },
     {
       sequelize,
