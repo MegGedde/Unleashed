@@ -29,7 +29,7 @@
 
 {{/each}}
 
-<form class="m-0">
+{{!-- <form class="m-0">
     <a href="/post/1" class="short-post">
         <h1 class="p-2">Name</h1>
     </a>
@@ -50,7 +50,7 @@
             <p>State: information</p>
         </div>
     </div>
-    <p class="p-2 form-header">Posted by User on 4/20/2020</p>
+    <p class="p-2 form-header">Posted by User on 4/20/2020</p> --}}
 </form>
 
 {{!-- {{#each posts as |post|}}
@@ -81,4 +81,6 @@
 </form>
 {{/each}} --}}
 
+{{#if loggedIn}}
 <a href="/addpost" class="btn-addpost">+ Post A Lost Pet</a>
+{{/if}}

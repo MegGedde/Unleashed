@@ -140,7 +140,7 @@ router.get('/addpost', (req, res) => {
       res.status(500).json(err);
       });
 })
-// SINGLE POST
+// // SINGLE POST
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -157,16 +157,7 @@ router.get('/post/:id', (req, res) => {
         }
       },
 
-        attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
-            include: [
-              {
-                model: Pet,
-                attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-              },
+        
               // {
               //   model: Comment,
               //   attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
