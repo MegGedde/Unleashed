@@ -58,7 +58,7 @@ h3 {
   color: var(--secondary-color);
   font-size: var(--font-size-md);
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   width: 100%;
   background: var(--quinary-color);
 }
@@ -97,11 +97,33 @@ textarea {
   color: var(--primary-color);
 }
 
+img {
+  border: 4px solid var(--quinary-color);
+  width: auto;
+}
+
+.comment {
+  background: var(--tertiary-color);
+  border: 4px solid var(--quinary-color);
+  width: 100%;
+  max-width: 900px;
+  border-radius: 10px;
+}
+
+
+
 p,
 input,
 textarea,
 label {
   font-size: var(--font-size-sm);
+}
+
+.comment-header {
+  padding: 10px;
+  background: var(--quinary-color);
+  width: 100%;
+  color: var(--secondary-color);
 }
 
 .quick-search-form {
@@ -122,6 +144,7 @@ label {
 .heading {
   color: var(--secondary-color);
   font-size: var(--font-size-md);
+  background: var(--quinary-color);
   width: 100%;
 }
 
