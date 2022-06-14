@@ -20,7 +20,7 @@ Pet.init(
         allowNull: false
       },
       species: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('Dog', 'Cat', 'Reptile', 'Other'),
         allowNull: false,
       },
       breed: {

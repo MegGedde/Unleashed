@@ -48,6 +48,42 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+//Get All in One Species
+router.get('/post/:species', (req, res) => {
+  Post.findAll({
+    where: {
+      species: req.params.species
+    },
+    attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
+            include: [
+              {
+                model: Pet,
+                attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
+                include: {
+                  model: User,
+                  attributes: ['username']
+                }
+              },
+              {
+                model: User,
+                attributes: ['username']
+              }
+            ]
+          })
+    .then(dbPostData => {
+      // serialize data before passing to template
+      const posts = dbPostData.map(post => post.get({ plain: true }));
+      res.render('homepage_filtered', {
+        posts,
+        loggedIn: true
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // DASHBOARD
 router.get('/dashboard', (req, res) => {
   if (!req.session.loggedIn) {
