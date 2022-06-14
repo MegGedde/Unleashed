@@ -6,32 +6,32 @@ const { Post, User, Comment, Pet } = require('../models');
 // HOMEPAGE
 router.get('/', (req, res) => {
   console.log(req.session);
-    Post.findAll({
-        attributes: ['id', 'title', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
-            include: [
-              {
-                model: Pet,
-                attributes: ['pet_name', 'pet_age', 'species', 'breed', 'color', 'when_encounter', 'photo']
-              },
-              {
-                model: User,
-                attributes: ['username']
-              }
-            ]
-          })
-          .then(dbPostData => {
-            const posts = dbPostData.map(post => post.get({ plain: true }));  
-            console.log(posts)   
-            res.render('homepage', {
-              posts,
-              loggedIn: req.session.loggedIn
-            });
-          })
-          .catch(err => {
-           console.log(err);
-          res.status(500).json(err);
-          });
-        });
+  Post.findAll({
+    attributes: ['id', 'title', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
+    include: [
+      {
+        model: Pet,
+        attributes: ['pet_name', 'pet_age', 'species', 'breed', 'color', 'when_encounter', 'photo']
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      const posts = dbPostData.map(post => post.get({ plain: true }));
+      console.log(posts)
+      res.render('homepage', {
+        posts,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 // LOGIN AND SIGN UP
 router.get('/login', (req, res) => {
@@ -40,23 +40,18 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-
-  // error message added 
-
+ // error message added 
   res.render('login');
-  if (!dbUserData) {
-    res.status(400).json({ message: 'No user with that email address!' });
-    return;
-  }
-
-  const validPassword = dbUserData.checkPassword(req.body.password);
-
-  if (!validPassword) {
-    res.status(400).json({ message: 'Incorrect password!' });
-    return;
-  }
-
-  res.json({ user: dbUserData, message: 'You are now logged in!' });
+  // if (!dbUserData) {
+  //   res.status(400).json({ message: 'No user with that email address!' });
+  //   return;
+  // }
+  // const validPassword = dbUserData.checkPassword(req.body.password);
+  // if (!validPassword) {
+  //   res.status(400).json({ message: 'Incorrect password!' });
+  //   return;
+  // }
+  // res.json({ user: dbUserData, message: 'You are now logged in!' });
 });
 
 router.get('/signup', (req, res) => {
@@ -68,8 +63,6 @@ router.get('/signup', (req, res) => {
     console.log('error signing up')
   }
   res.render('signup');
-
-
 });
 
 // DASHBOARD
@@ -84,29 +77,29 @@ router.get('/dashboard', (req, res) => {
     },
     attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
 
-            include: [
-              {
-                model: Pet,
-                attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-              },
-              // {
-              //   model: Comment,
-              //   attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
-              //   include: {
-              //     model: User,
-              //     attributes: ['username']
-              //   }
-              // },
-              {
-                model: User,
-                attributes: ['username']
-              }
-            ]
-          })
+    include: [
+      {
+        model: Pet,
+        attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      // {
+      //   model: Comment,
+      //   attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+      //   include: {
+      //     model: User,
+      //     attributes: ['username']
+      //   }
+      // },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
 
     .then(dbPostData => {
       // serialize data before passing to template
@@ -142,20 +135,20 @@ router.get('/addpost', (req, res) => {
     where: {
       user_id: req.session.user_id
     }
-       
-      })
-      .then(dbPostData => {
-        const pets = dbPostData.map(pet => pet.get({ plain: true })); 
-        console.log(pets)    
-        res.render('add-post', {
-          pets,
-          loggedIn: req.session.loggedIn
-        });
-      })
-      .catch(err => {
-       console.log(err);
-      res.status(500).json(err);
+
+  })
+    .then(dbPostData => {
+      const pets = dbPostData.map(pet => pet.get({ plain: true }));
+      console.log(pets)
+      res.render('add-post', {
+        pets,
+        loggedIn: req.session.loggedIn
       });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 })
 // // SINGLE POST
 router.get('/post/:id', (req, res) => {
@@ -174,37 +167,37 @@ router.get('/post/:id', (req, res) => {
         }
       },
 
-        
-              // {
-              //   model: Comment,
-              //   attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
-              //   include: {
-              //     model: User,
-              //     attributes: ['username']
-              //   }
-              // },
-              {
-                model: User,
-                attributes: ['username']
-              }
-            ]
-          })
-          .then(dbPostData => {
-            if (!dbPostData) {
-              res.status(404).json({ message: 'No post found with this id' });
-              return;
-            }
-            const post = dbPostData.get({ plain: true });        
-            res.render('single-post', {
-              posts,
-              loggedIn: req.session.loggedIn
-            });
-          })
-          .catch(err => {
-           console.log(err);
-          res.status(500).json(err);
-          });
-        });
+
+      // {
+      //   model: Comment,
+      //   attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+      //   include: {
+      //     model: User,
+      //     attributes: ['username']
+      //   }
+      // },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      const post = dbPostData.get({ plain: true });
+      res.render('single-post', {
+        posts,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 
 
