@@ -4,17 +4,17 @@
         <h2>QUICK FILTERS</h2>
     </div>
     <div class="m-1 is-flex is-justify-content-center columns">
-        <button type="submit" class="column dogs">Dogs</button>
-        <button type="submit" class="column cats">Cats</button>
-        <button type="submit" class="column reptile">Reptiles</button>
-        <button type="submit" class="column other">Others</button>
+        <button type="click" class="column" id="dog">Dogs</button>
+        <button type="click" class="column" id="cat">Cats</button>
+        <button type="click" class="column" id="reptile">Reptiles</button>
+        <button type="click" class="column" id="other">Others</button>
     </div>
 </form>
 
 <!-- SEARCH BAR FORM -->
 <form class="m-4 search-form">
     <div class="m-2 columns">
-        <input class="m-2 column is-three-quarters" type="text" placeholder="Search...">
+        <input class="m-2 column is-three-quarters" type="text" placeholder="Name Search">
         <button class="m-2 column">On the Prowl!</button>
     </div>
 </form>
@@ -70,3 +70,5 @@
 {{#if loggedIn}}
 <a href="/addpost" class="btn-addpost">+ Post A Lost Pet</a>
 {{/if}}
+
+<script src="/javascript/filtered.js"></script>
