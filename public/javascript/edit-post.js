@@ -1,15 +1,32 @@
 async function newFormHandler(event) {
     event.preventDefault();
-    const title = document.querySelector('#post-title').value;
-    const content = document.querySelector('#post-text').value;
+    const last_seen_time = document.querySelector('#time').value;
+    const last_seen_street = document.querySelector('#street').value;
+    const last_seen_city = document.querySelector('#city').value;
+    const last_seen_state = document.querySelector('#state').value;
+    const last_seen_country = document.querySelector('#country').value;
+
     const post_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
+
+    console.log(
+        last_seen_time,
+        last_seen_street,
+        last_seen_city,
+        last_seen_state,
+        last_seen_country,
+        post_id
+    );
+
     const response = await fetch(`/api/posts/${post_id}`, {
         method: 'PUT',
         body: JSON.stringify({
-            title,
-            content
+            last_seen_time,
+            last_seen_street,
+            last_seen_city,
+            last_seen_state,
+            last_seen_country
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -25,8 +42,7 @@ async function newFormHandler(event) {
 
 async function deleteFormHandler(event) {
     event.preventDefault();
-    console.log('delete');
-    console.log(event);
+
     const post_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];

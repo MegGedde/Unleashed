@@ -12,14 +12,14 @@
 </form>
 
 {{#each posts as |post|}}
-<form class="m-0">
-    <a href="/post/{{post.id}}" class="short-post">
+<form class="m-2">
+    <a href="/editpost/{{post.id}}" class="short-post">
         <h1 class="Post">{{pet.pet_name}}</h1>
         <p>Posted by {{user.username}} {{post.created_at}}</p>
     </a>
     <div class="m-0 columns">
         <div class="column form-header fill">
-            <img src="{{html5.gif}}" alt="HTML5 Icon" style="width:250px;height:250px;">
+            <img src="/images/paw-print.svg" alt="image of a paw print">
         </div>
         <div class="p-3 column form-header">
             <h3>Age: {{pet.pet_age}}</h3>
