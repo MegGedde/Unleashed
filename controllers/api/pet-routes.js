@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const multer  = require('multer')
-const upload = multer({ dest: '../../uploads' })
+// const multer  = require('multer')
+// const upload = multer({ dest: '../../uploads' })
 const { Pet } = require('../../models')
-const {uploadFile, downloadFile} = require('../../s3')
-const fs = require('fs')
-const util = require('fs')
-const promisify = require('util.promisify')
+// const {uploadFile, downloadFile} = require('../../s3')
+// const fs = require('fs')
+// const util = require('fs')
+// const promisify = require('util.promisify')
 
-const removeFile = promisify(fs.unlink)
+// const removeFile = promisify(fs.unlink)
 
 // Get all pets 
 router.get('/all', (req, res) => {
@@ -115,14 +115,14 @@ router.put('/:id', (req, res) => {
 })
 
 // Downloads the image from AWS bucket and displays that image 
-router.get('/images/:key', (req, res) => {
-    const key = req.params.key
-    const readStream = downloadFile(key)
+// router.get('/images/:key', (req, res) => {
+//     const key = req.params.key
+//     const readStream = downloadFile(key)
 
     // Sends the image data right to the user
-    readStream.pipe(res)
+    // readStream.pipe(res)
     // res.redirect(`/images/${key}`)
-})
+// })
  
 // Uses AWS Services
 // Grabs form data and creates a new Pet 
