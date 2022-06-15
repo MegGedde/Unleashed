@@ -111,6 +111,7 @@ textarea {
   align-items: center;
   overflow: hidden
 }
+
 .fill img {
   flex-shrink: 0;
   min-width: 100%;
@@ -125,7 +126,8 @@ textarea {
   border-radius: 10px;
 }
 
-.posted-by, .post-link {
+.posted-by,
+.post-link {
   color: var(--tertiary-color);
 }
 
@@ -161,7 +163,7 @@ label {
   width: 100%;
 }
 
-.last-seen-info p{
+.last-seen-info p {
   font-size: 1.6rem;
 }
 
@@ -235,7 +237,8 @@ button:hover {
   color: var(--tertiary-color);
 }
 
-.btn-addpost:hover, .short-post a:hover {
+.btn-addpost:hover,
+.short-post a:hover {
   background: var(--primary-color);
   color: var(--secondary-color);
 }
@@ -256,13 +259,37 @@ button:hover {
   color: var(--primary-color);
   background: none;
 }
+
 .btn-delete {
   background-color: var(--primary-color);
+}
+
+.btn-delete:hover {
+  background-color: var(--quaternary-color);
+  color: var(--primary-color);
+}
+
+.square {
+  border-radius: 0px;
 }
 
 .round {
   border-radius: 10px;
 }
+
 nav button {
   padding: 0px;
+}
+
+.left {
+  text-align: left;
+}
+
+
+.form-img {
+  max-width: 500px;
+}
+
+.left label {
+  color: var(--secondary-color);
 }

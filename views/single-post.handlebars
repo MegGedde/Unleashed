@@ -1,41 +1,46 @@
 {{!-- POST INFO --}}
-<form class="m-4">
-  <h2 class="form-header">{{post.title}}</h2>
-  <h2 class="form-header">Posted by {{post.user.username}} on {{format_date post.created_at}}</h2>
-  <h1>{{post.pet.pet_name}}</h1>
-  <div class="m-0 columns">
-    <div class="p-0 column">
-      <div class="form-header">
-        <h3>Species: {{post.pet.species}}</h3>
-      </div>
-      <div class="m-2">
-        <label>Age:</label>
-        <p>{{post.pet.pet_age}}</p>
-        <label>Color:</label>
-        <p>{{post.pet.color}}</p>
-        <label>Breed:</label>
-        <p>{{post.pet.breed}}</p>
-      </div>
+<form class="m-3 short-post">
+  <div>
+    <h1>{{post.pet.pet_name}}</h1>
+    <h2>{{post.title}}</h2>
+    <h2>Posted by {{post.user.username}} on {{format_date post.created_at}}</h2>
+  </div>
+  <div class="form-header ">
+    <img class="p-4 form-img" src="/images/paw-print.png" alt="image of a paw print">
+  </div>
+  <div class="m-0 columns form-header">
+    <div class="p-0 column is-one-quarter">
       <div>
-        <h2 class="heading">Last Seen Information</h2>
-        <div class="m-2">
-          <label>Time:</label>
-          <p>{{post.last_seen_time}}</p>
-          <label>Street:</label>
-          <p>{{post.last_seen_street}}</p>
-          <label>City:</label>
-          <p>{{post.last_seen_city}}</p>
-          <label>State:</label>
-          <p>{{post.last_seen_state}}</p>
-          <label>Country:</label>
-          <p>{{post.last_seen_country}}</p>
-        </div>
+        <h2 class="left">{{post.pet.pet_name}}'s Details</h2>
+      </div>
+      <div class="m-2 left">
+        <label>Species:<label>
+            <h3>{{post.pet.species}}</h3>
+            <label>Age:</label>
+            <h3>{{post.pet.pet_age}}</h3>
+            <label>Color:</label>
+            <h3>{{post.pet.color}}</h3>
+            <label>Breed:</label>
+            <h3>{{post.pet.breed}}</h3>
       </div>
     </div>
-    <div class="column is-two-thirds">
-      <img src="/images/paw-print.svg" alt="image of a paw print">
+    <div class="p-0 form-header column">
+      <h2 class="left">Last Seen Information</h2>
+      <div class="m-2 left">
+        <label>Time:</label>
+        <h3>{{post.last_seen_time}}</h3>
+        <label>Street:</label>
+        <h3>{{post.last_seen_street}}</h3>
+        <label>City:</label>
+        <h3>{{post.last_seen_city}}</h3>
+        <label>State:</label>
+        <h3>{{post.last_seen_state}}</h3>
+        <label>Country:</label>
+        <h3>{{post.last_seen_country}}</h3>
+      </div>
     </div>
   </div>
+
 </form>
 
 {{#if loggedIn}}
