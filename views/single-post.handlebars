@@ -1,27 +1,37 @@
-<div>This is Single Post Page</div>
 
-
+<h1>{{posts.title}}</h1>
 {{!-- POST INFO --}}
 <form>
   <div class="m-0 columns">
     <div class="p-0 column">
       <div class="form-header">
-        <h1>Name</h1>
-        <h3>Type</h3>
+        <h1 class="is-capitalized">{{posts.pet.pet_name}}</h1>
+        <h3 class="is-capitalized">{{posts.pet.species}}</h3>
       </div>
-      <p>Age: 00</p>
-      <p>Color: Brown</p>
-      <p>Breed:</p>
+      <div class="single-post-description">
+        <p><span class="text-accent">Age:</span> {{posts.pet.pet_age}}</p>
+        <p><span class="text-accent">Color:</span> {{posts.pet.color}}</p>
+        <p><span class="text-accent">Breed:</span> {{posts.pet.breed}}</p>
+      </div>
     </div>
-    <div class="column is-two-thirds">
-      <img src="html5.gif" alt="HTML5 Icon" style="width:500px;height:500px;">
+    <div class="column is-two-thirds ">
+      <img src="/api/pets/images/{{posts.pet.photo}}" alt="HTML5 Icon" style="width:400px;height:400px;">
     </div>
   </div>
   <div>
+    <div class="single-post-description has-text-centered">
+        <p class="has-text-centered"><span class="text-accent span-block">What to do if you encounter {{posts.pet.pet_name}}:</span> {{posts.pet.when_encounter}}</p>
+        <p><span class="text-accent">Unique Features:</span> {{posts.pet.unique_features}}</p>
+
+      </div>
+  </div>
+  <div>
     <h2 class="heading">Last Seen information</h2>
-    <p>Street: information</p>
-    <p>City: information</p>
-    <p>State: information</p>
+    <div class="single-post-description has-text-centered">
+      <p><span class="text-accent">Street:</span> {{posts.last_seen_street}}</p>
+      <p><span class="text-accent">City:</span> {{posts.last_seen_city}}</p>
+      <p><span class="text-accent">State: </span>{{posts.last_seen_state}}</p>
+    </div>
   </div>
 </form>
 
@@ -38,6 +48,7 @@
   </div>
 </div>
 
+{{#if loggedIn}}
 <!-- POST A COMMENT FORM -->
 <form>
   <div class="form-header">
@@ -48,3 +59,5 @@
   </div>
   <button class="btn-generic">Post</button>
 </form>
+
+{{/if}}

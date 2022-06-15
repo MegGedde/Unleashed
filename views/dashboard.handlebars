@@ -1,4 +1,4 @@
-<div>This is the dashboard</div>
+<h1>Your Posts</h1>
 
 
 <a href="/addpet" class="btn-addpost">+ Add A Pet</a>
@@ -7,19 +7,20 @@
 
 {{#each posts as |post|}}
 <form class="m-0">
-    <a href="/post/{{post.id}}" class="short-post">
+    <a href="/posts/{{post.id}}" class="short-post">
         <h1 class="Post">{{pet.pet_name}}</h1>
+        <h2 class="header">{{title}}</h2>
         <p>Posted by {{user.username}} {{post.created_at}}</p>
     </a>
     <div class="m-0 columns">
-        <div class="column form-header fill">
-            <img src="{{html5.gif}}" alt="HTML5 Icon" style="width:250px;height:250px;">
-        </div>
+        <div class="column">
+        <img src="/api/pets/images/{{pet.photo}}" alt="HTML5 Icon" style="width:250px;height:250px;">
+    </div>
         <div class="p-3 column form-header">
+            <h3 class="is-capitalized ">Species: {{pet.species}}</h3>
+            <h3 class="is-capitalized ">Breed: {{pet.breed}}</h3>
             <h3>Age: {{pet.pet_age}}</h3>
-            <h3>Color: {{pet.color}}</h3>
-            <h3>Species: {{pet.species}}</h3>
-            <h3>Breed: {{pet.breed}}</h3>
+            <h3 >Color: {{pet.color}}</h3>
         </div>
         <div class="column">
             <h2 class="heading">Last Seen Info</h2>
