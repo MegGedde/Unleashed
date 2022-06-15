@@ -236,3 +236,7 @@ button:hover {
 .btn-delete {
   background-color: var(--primary-color);
 }
+
+nav button {
+  padding: 0px;
+}

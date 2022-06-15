@@ -5,31 +5,31 @@ const { Post, User, Comment, Pet } = require('../models');
 // HOMEPAGE
 router.get('/', (req, res) => {
   console.log(req.session);
-    Post.findAll({
-        attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
-            include: [
-              {
-                model: Pet,
-                attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo']
-              },
-              {
-                model: User,
-                attributes: ['username']
-              }
-            ]
-          })
-          .then(dbPostData => {
-            const posts = dbPostData.map(post => post.get({ plain: true }));        
-            res.render('homepage', {
-              posts,
-              loggedIn: req.session.loggedIn
-            });
-          })
-          .catch(err => {
-           console.log(err);
-          res.status(500).json(err);
-          });
-        });
+  Post.findAll({
+    attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
+    include: [
+      {
+        model: Pet,
+        attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo']
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      const posts = dbPostData.map(post => post.get({ plain: true }));
+      res.render('homepage', {
+        posts,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 // LOGIN AND SIGN UP
 router.get('/login', (req, res) => {
@@ -48,6 +48,30 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+// ALL ADD ROUTES FOR BOTH POST AND PET
+// ADD A POST
+router.get('/addpost', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('add-post', {
+    loggedIn: true
+  });
+});
+
+// ADD A PET
+router.get('/addpet', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('add-pet', {
+    dashboard: true,
+    loggedIn: true
+  });
+});
+
 //Get All in One Species
 router.get('/post/:species', (req, res) => {
   Post.findAll({
@@ -55,21 +79,21 @@ router.get('/post/:species', (req, res) => {
       species: req.params.species
     },
     attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
-            include: [
-              {
-                model: Pet,
-                attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-              },
-              {
-                model: User,
-                attributes: ['username']
-              }
-            ]
-          })
+    include: [
+      {
+        model: Pet,
+        attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
     .then(dbPostData => {
       // serialize data before passing to template
       const posts = dbPostData.map(post => post.get({ plain: true }));
@@ -90,38 +114,60 @@ router.get('/dashboard', (req, res) => {
     res.redirect('/');
     return;
   }
+  let pets;
+  let posts;
+
+  Pet.findAll({
+    where: {
+      user_id: req.session.user_id
+    },
+    attributes: [
+      'id',
+      'pet_name',
+    ],
+
+  })
+    .then(dbPetData => {
+      pets = dbPetData.map(pet => pet.get({ plain: true }));
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+
   Post.findAll({
     where: {
       user_id: req.session.user_id
     },
     attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
-            include: [
-              {
-                model: Pet,
-                attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-              },
-              {
-                model: Comment,
-                attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-              },
-              {
-                model: User,
-                attributes: ['username']
-              }
-            ]
-          })
+    include: [
+      {
+        model: Pet,
+        attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
     .then(dbPostData => {
       // serialize data before passing to template
-      const posts = dbPostData.map(post => post.get({ plain: true }));
+      posts = dbPostData.map(post => post.get({ plain: true }));
       res.render('dashboard', {
+        pets,
         posts,
         loggedIn: true
       });
@@ -132,110 +178,97 @@ router.get('/dashboard', (req, res) => {
     });
 });
 
-// ADD A PET
-router.get('/addpet', (req, res) => {
-  res.render('add-pet');
-  // if (!req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }
-  // res.render('add-post', {
-  //   dashboard: true,
-  //   loggedIn: true
-  // });
-});
-
 // SINGLE POST
 router.get('/post/:id', (req, res) => {
-    Post.findOne({
-      where: {
-        id: req.params.id
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
+    include: [
+      {
+        model: Pet,
+        attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
       },
-        attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
-            include: [
-              {
-                model: Pet,
-                attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-              },
-              {
-                model: Comment,
-                attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-              },
-              {
-                model: User,
-                attributes: ['username']
-              }
-            ]
-          })
-          .then(dbPostData => {
-            if (!dbPostData) {
-              res.status(404).json({ message: 'No post found with this id' });
-              return;
-            }
-            const post = dbPostData.get({ plain: true });        
-            res.render('single-post', {
-              posts,
-              loggedIn: req.session.loggedIn
-            });
-          })
-          .catch(err => {
-           console.log(err);
-          res.status(500).json(err);
-          });
-        });
+      {
+        model: Comment,
+        attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      const post = dbPostData.get({ plain: true });
+      res.render('single-post', {
+        posts,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 
 
 router.get('/editpost/:id', (req, res) => {
   if (!req.session.loggedIn) {
-        res.redirect('/');
-        return;
-      }
+    res.redirect('/');
+    return;
+  }
   Post.findOne({
     where: {
       id: req.params.id
     },
-      attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
-          include: [
-            {
-              model: Pet,
-              attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
-              include: {
-                model: User,
-                attributes: ['username']
-              }
-            },
-            {
-              model: User,
-              attributes: ['username']
-            }
-          ]
-        })
-        .then(dbPostData => {
-          if (!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id' });
-            return;
-          }
-          const post = dbPostData.get({ plain: true });        
-          res.render('edit-post', {
-                post,
-                dashboard: true,
-                loggedIn: req.session.loggedIn
-              });
-        })
-        .catch(err => {
-         console.log(err);
-        res.status(500).json(err);
-        });
+    attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
+    include: [
+      {
+        model: Pet,
+        attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      const post = dbPostData.get({ plain: true });
+      res.render('edit-post', {
+        post,
+        dashboard: true,
+        loggedIn: req.session.loggedIn
       });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 
 module.exports = router;

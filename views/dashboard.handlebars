@@ -1,9 +1,8 @@
-<div>This is the dashboard</div>
+<h2>My Dashboard</h2>
 
-
-<a href="/addpet" class="btn-addpost">+ Add A Pet</a>
-
-
+{{#each pets as |pet|}}
+<div>{{pet_name}}</div>
+{{/each}}
 
 {{#each posts as |post|}}
 <form class="m-0">
@@ -33,3 +32,4 @@
 </form>
 {{/each}}
 
+<a href="/addpet" class="btn-addpost">+ Add A Pet</a>
