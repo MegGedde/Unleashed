@@ -1,6 +1,7 @@
 {{!-- POST INFO --}}
 <form class="m-4">
   <h2 class="form-header">{{post.title}}</h2>
+  <h2 class="form-header">Posted by {{post.user.username}} on {{format_date post.created_at}}</h2>
   <h1>{{post.pet.pet_name}}</h1>
   <div class="m-0 columns">
     <div class="p-0 column">
@@ -59,7 +60,7 @@
   </div>
   <div class="comment-header column">
     <p>By {{user.username}}</p>
-    <p>On {{created_at}}</p>
+    <p>On {{format_date created_at}}</p>
   </div>
 </div>
 {{/each}}

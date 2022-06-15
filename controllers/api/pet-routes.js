@@ -58,28 +58,6 @@ router.get('/:id', (req, res) => {
       });
 })
 
-// Get a pet by USERNAME
-// router.get('/', (req, res) => {
-//     Pet.findOne({
-//         where: {
-//             pet_name: req.query.name
-//         },
-//         attributes: [
-//             'id',
-//             'pet_name',
-//             'photo'
-
-//         ]    
-//     })
-//     .then(dbPetData => {
-//         res.json(dbPetData)
-//     })
-//     .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-// })
-
 // Create a pet
 router.post('/', (req, res) => {
     Pet.create({

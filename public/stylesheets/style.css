@@ -98,9 +98,10 @@ textarea {
   font-size: var(--font-size-md);
   font-weight: bold;
   width: 100%;
+  text-align: center;
 }
 
-.signup-link:hover, .short-post h1:hover {
+.signup-link:hover {
   color: var(--primary-color);
 }
 
@@ -199,20 +200,42 @@ button:hover {
 .btn-addpost {
   outline: none;
   border: none;
-  margin: 3px;
   padding: 10px 15px;
   border-radius: 8px;
   background: var(--secondary-color);
   color: var(--quinary-color);
   font-size: var(--font-size-md);
   font-weight: bold;
-  width: 75%;
+  width: 50%;
   text-align: center;
-  position: fixed;
-  bottom: 20px;
 }
 
-.btn-addpost:hover {
+.short-post a {
+  outline: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 0px 0px 5px 5px;
+  background: var(--secondary-color);
+  color: var(--quinary-color);
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.short-post h2 {
+  color: var(--quaternary-color);
+}
+
+.short-post label {
+  color: var(--tertiary-color);
+}
+
+.short-post h3 {
+  color: var(--tertiary-color);
+}
+
+.btn-addpost:hover, .short-post a:hover {
   background: var(--primary-color);
   color: var(--secondary-color);
 }
@@ -237,6 +260,9 @@ button:hover {
   background-color: var(--primary-color);
 }
 
+.round {
+  border-radius: 10px;
+}
 nav button {
   padding: 0px;
 }

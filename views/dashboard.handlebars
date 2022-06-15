@@ -1,42 +1,53 @@
 <h1>My Dashboard</h1>
+
+
+<a href="/addpet" class="btn-addpost">+ Add A Pet</a>
 {{!-- MY PETS --}}
-<form class="m-4 quick-search-form">
+<form class="m-4 quick-search-form" id="delete-pet-form">
     <div class="form-header">
         <h2>MY PETS</h2>
     </div>
     <div class="m-1">
         {{#each pets as |pet|}}
-        <button type="click" class="p-1 btn-generic" id="{{id}}">{{pet_name}}</button>
+        <div class="m-0 columns">
+            <h3 class="m-1 p-3 column round">{{pet_name}} | Species: {{species}} - Age: {{pet_age}}</h3>
+            <button type="click" class="p-1 btn-delete column is-one-quarter" id="{{id}}">Delete</button>
+        </div>
         {{/each}}
     </div>
 </form>
 
+<a href="/addpost" class="m-4 btn-addpost">+ Post A Lost Pet</a>
+
 {{#each posts as |post|}}
-<form class="m-2">
-    <a href="/editpost/{{post.id}}" class="short-post">
-        <h1 class="Post">{{pet.pet_name}}</h1>
-        <p>Posted by {{user.username}} {{post.created_at}}</p>
-    </a>
-    <div class="m-0 columns">
-        <div class="column form-header fill">
-            <img src="/images/paw-print.svg" alt="image of a paw print">
+<form class="m-3 short-post">
+    <div class="m-2">
+        <h1 class="p-0">{{pet.pet_name}}</h1>
+        <h2>{{post.title}}</h2>
+        <h2>Posted on {{format_date post.created_at}}</p>
+    </div>
+    <div class="m-0 columns  form-header">
+        <div class="column fill">
+            <img class="p-3" src="/images/paw-print.png" alt="image of a paw print">
         </div>
-        <div class="p-3 column form-header">
-            <h3>Age: {{pet.pet_age}}</h3>
-            <h3>Color: {{pet.color}}</h3>
+        <div class="p-3 column is-one-quarter">
+            <h2 class="heading">Details</h2>
             <h3>Species: {{pet.species}}</h3>
             <h3>Breed: {{pet.breed}}</h3>
+            <h3>Age: {{pet.pet_age}}</h3>
+            <h3>Color: {{pet.color}}</h3>
         </div>
         <div class="column">
-            <h2 class="heading">Last Seen Info</h2>
-            <p>Time: {{last_seen_time}}</p>
-            <p>Street: {{last_seen_street}}</p>
-            <p>City: {{last_seen_city}}</p>
-            <p>State: {{last_seen_state}}</p>
-            <p>Country: {{last_seen_country}}</p>
+            <h2 class="heading">Last Seen</h2>
+            <h3>Time: {{last_seen_time}}</h3>
+            <h3>Street: {{last_seen_street}}</h3>
+            <h3>City: {{last_seen_city}}</h3>
+            <h3>State: {{last_seen_state}}</h3>
+            <h3>Country: {{last_seen_country}}</h3>
         </div>
     </div>
+    <a class="m-0" href="/editpost/{{post.id}}">Edit Post</a> 
 </form>
 {{/each}}
 
-<a href="/addpet" class="btn-addpost">+ Add A Pet</a>
+<script src="/javascript/delete-pet.js"></script>

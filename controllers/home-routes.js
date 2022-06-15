@@ -6,11 +6,11 @@ const { Post, User, Comment, Pet } = require('../models');
 router.get('/', (req, res) => {
   console.log(req.session);
   Post.findAll({
-    attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
+    attributes: ['id', 'title','last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
     include: [
       {
         model: Pet,
-        attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo']
+        attributes: ['pet_name', 'pet_age', 'species', 'breed', 'color', 'when_encounter', 'photo']
       },
       {
         model: User,
@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
   })
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
+      console.log(posts);
       res.render('homepage', {
         posts,
         loggedIn: req.session.loggedIn
@@ -141,6 +142,8 @@ router.get('/dashboard', (req, res) => {
     attributes: [
       'id',
       'pet_name',
+      'species',
+      'pet_age',
     ],
 
   })
@@ -160,7 +163,7 @@ router.get('/dashboard', (req, res) => {
     include: [
       {
         model: Pet,
-        attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
+        attributes: ['pet_name', 'pet_age', 'species', 'breed', 'color', 'when_encounter', 'photo'],
         include: {
           model: User,
           attributes: ['username']

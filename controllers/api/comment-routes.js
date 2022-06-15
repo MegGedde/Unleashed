@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
             res.status(500).json(err);
         });
 });
+
 // post comments 
 router.post('/', (req, res) => {
     // expects => { comment_text}
