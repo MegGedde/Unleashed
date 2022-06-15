@@ -10,9 +10,9 @@ const hbs = exphbs.create({ helpers });
 
 // IMAGES
 // store uploaded images middleware
-const multer = require('multer')
-const upload = multer({ dest: './uploads' })
-const { uploadFile } = require('./s3')
+// const multer = require('multer')
+// const upload = multer({ dest: './uploads' })
+// const { uploadFile } = require('./s3')
 
 const sess = {
   secret: 'Super Secret',
