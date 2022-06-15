@@ -43,7 +43,6 @@ Pet.init(
         type: DataTypes.STRING,
         allowNull: true
       },
-      // I will uncomment once USER is all ready to go
       user_id: {
         type: DataTypes.INTEGER,
         references: {
