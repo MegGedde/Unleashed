@@ -38,6 +38,7 @@ app.use(routes);
 // Starts Handlebars
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.set('port', PORT);
 
 // turn on connection to db and server
 sequelize.sync({ force: true }).then(() => {
