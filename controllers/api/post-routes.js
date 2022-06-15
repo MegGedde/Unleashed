@@ -70,6 +70,43 @@ router.get('/:id', (req, res) => {
       });
   });
 
+  //Get All in One Species
+router.get('/:species', (req, res) => {
+  Post.findAll({
+    where: {
+      species: req.params.species
+    },
+    attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
+            include: [
+              {
+                model: Pet,
+                attributes: ['pet_name', 'species', 'breed', 'color', 'when_encounter', 'photo'],
+                include: {
+                  model: User,
+                  attributes: ['username']
+                }
+              },
+              {
+                model: User,
+                attributes: ['username']
+              }
+            ]
+          })
+    .then(dbPostData => {
+      // serialize data before passing to template
+      const posts = dbPostData.map(post => post.get({ plain: true }));
+      res.render('homepage', {
+        posts,
+        loggedIn: true
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
   //create a post
 router.post('/', (req, res) => {
     Post.create({
