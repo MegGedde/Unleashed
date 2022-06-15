@@ -132,6 +132,28 @@ router.get('/dashboard', (req, res) => {
     });
 });
 
+// ADD A POST
+router.get('/addpost', (req, res) => {
+  Pet.findAll({
+    attributes: ['id', 'pet_name', 'user_id'],
+    where: {
+      user_id: req.session.user_id
+    }
+       
+      })
+      .then(dbPostData => {
+        const pets = dbPostData.map(pet => pet.get({ plain: true })); 
+        console.log(pets)    
+        res.render('add-post', {
+          pets,
+          loggedIn: req.session.loggedIn
+        });
+      })
+      .catch(err => {
+       console.log(err);
+      res.status(500).json(err);
+      });
+})
 // ADD A PET
 router.get('/addpet', (req, res) => {
   res.render('add-pet');
