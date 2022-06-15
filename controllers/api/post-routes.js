@@ -116,7 +116,7 @@ router.post('/', (req, res) => {
         last_seen_city: req.body.last_seen_city,
         last_seen_state: req.body.last_seen_state,
         last_seen_country: req.body.last_seen_country,
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         pet_id: req.body.pet_id
     })
     .then(dbPostData => res.json(dbPostData))

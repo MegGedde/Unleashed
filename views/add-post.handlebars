@@ -1,58 +1,34 @@
-
-<div>
-    <h2>Please Select A Pet</h2>
-    {{#each pets as |pet|}}
-        {{> pets-of-owner pet}}
-    {{/each}}
-</div>
-
-<div>
-    <form action="/api/posts/create-post" method="post">
-
-    <label for="petPhotoId"></label>
-    <input class="pet-id" id="petPhotoId" type="text" name="pet_id" readonly="readonly">
-
-    <label for="postTitle">Please enter a title for your post</label>
-    <input id="postTilte" name="title" type="text">
-
-    <label for="lastSeenTime">When was your pet last seen?</label>
-    <input id="lastSeenTime" name="last_seen_time" type="text">
-
-    <label for="lastSeenStreet">Street</label>
-    <input id="lastSeenStreet" name="last_seen_street" type="text">
-    
-    <label for="lastSeenCity">City</label>
-    <input id="lastSeenCity" name="last_seen_city" type="text">
-    
-    <label for="lastSeenState">State</label>
-    <input id="lastSeenState" name="last_seen_state" type="text">
-
-    <label for="lastSeenCountry">Country</label>
-    <input id="lastSeenCountry" name="last_seen_country" type="text">
-
-    <button type="submit">Create Post</button>
-    </form>
-</div>
-
-<!-- PET INFO FORM -->
-<form class="m-4">
+<!-- POST INFO FORM -->
+<form class="m-4" id="post-info-form">
     <div class="form-header">
         <h2>ADD A POST FORM</h2>
+    </div>
+    <h3>Please Select A Pet To Post</h3>
+    <div class="m-2">
+        <label>Please Select Your Lost Pet To Post</label>
+        <select class="is-flex p-2 box my-2" id="pet">
+            <option value="" disabled selected>My Pets</option>
+            {{#each pets as |pet|}}
+            <option id="{{id}}">ID:{{id}} -- {{pet_name}}</option>
+            {{/each}}
+        </select>
+        <label>Post Title</label>
+        <input type="text" id="title" placeholder="Please help me find my baby!">
     </div>
     <h3>Last Seen Info</h3>
     <article class="m-3">
         <label>Time</label>
-        <input type="time">
+        <input type="time" id="time">
         <label>Street</label>
-        <input type="text" placeholder="1234 Sesame Street">
+        <input type="text" placeholder="1234 Sesame Street" id="street">
         <label>City</label>
-        <input type="text" placeholder="Houston">
+        <input type="text" placeholder="Houston" id="city">
         <label>State</label>
-        <input type="text" placeholder="TX">
+        <input type="text" placeholder="Texas" id="state">
         <label>Country</label>
-        <input type="text" placeholder="USA">
+        <input type="text" placeholder="USA" id="country">
     </article>
-    <button class="m-0 btn-generic">Post!</button>
+    <button class="m-0 btn-generic" type="submit">Post!</button>
 </form>
 
 <script src="javascript/add-post.js"></script>

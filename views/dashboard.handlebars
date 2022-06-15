@@ -1,8 +1,15 @@
-<h2>My Dashboard</h2>
-
-{{#each pets as |pet|}}
-<div>{{pet_name}}</div>
-{{/each}}
+<h1>My Dashboard</h1>
+{{!-- MY PETS --}}
+<form class="m-4 quick-search-form">
+    <div class="form-header">
+        <h2>MY PETS</h2>
+    </div>
+    <div class="m-1">
+        {{#each pets as |pet|}}
+        <button type="click" class="p-1 btn-generic" id="{{id}}">{{pet_name}}</button>
+        {{/each}}
+    </div>
+</form>
 
 {{#each posts as |post|}}
 <form class="m-0">
