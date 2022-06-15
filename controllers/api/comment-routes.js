@@ -11,12 +11,12 @@ router.get('/', (req, res) => {
         });
 });
 // post comments 
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
     // expects => { comment_text}
     Comment.create({
         comment_text: req.body.comment_text,
         user_id: req.session.user_id,
-        post_id: req.body.post.id
+        post_id: req.body.post_id
     })
         .then(dbCommentData => res.json(dbCommentData))
         .catch(err => {
@@ -25,7 +25,7 @@ router.post('/', withAuth, (req, res) => {
         });
 });
 // delete comments
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', (req, res) => {
     Comment.destroy({
         where: {
             id: req.params.id
