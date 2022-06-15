@@ -293,3 +293,9 @@ nav button {
 .left label {
   color: var(--secondary-color);
 }
+
+.error {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: var(--font-size-md);
+}
