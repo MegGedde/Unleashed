@@ -1,3 +1,5 @@
+const errorEl = document.querySelector('#error');
+
 async function loginFormHandler(event) {
     event.preventDefault();
   
@@ -17,11 +19,12 @@ async function loginFormHandler(event) {
       
       // check the response status
       if (response.ok) {
-        console.log('it was a success')
+        console.log('it was a success');
         document.location.replace('/dashboard');
       } else {
-        console.log('it was an error')
-        alert(response.statusText);
+        console.log('it was an error');
+        errorEl.innerHTML= 'Invaild username and/or password!';
+        // alert(response.statusText);
       }
     }
   }

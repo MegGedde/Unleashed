@@ -1,75 +1,26 @@
-async function speciesDog() {
-  await fetch('/api/posts/Dog', {
-            method: 'GET',
-            body: JSON.stringify({
-                post_species
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+async function filterSpeciesPosts(event) {
+    event.preventDefault();
 
-        if (response.ok) {
-            document.location.replace('/homepage/');
-        } else {
-            alert(response.statusText);
-        }
+    const species = event.target.getAttribute("id");
+
+    console.log(species);
+    
+    if(species){
+        document.location.replace(`/filtered/${species}`);
+    }
 }
 
-async function speciesCat() {
-  await fetch('/post/Cat', {
-            method: 'GET',
-            body: JSON.stringify({
-                post_id
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+async function filterNamePosts(event) {
+    event.preventDefault();
+    console.log(event.target);
+    const name = document.querySelector('#name').value;
 
-        if (response.ok) {
-            document.location.reload();
-        } else {
-            alert(response.statusText);
-        }
+    console.log(name);
+    
+    if(name){
+        document.location.replace(`/name/${name}`);
+    }
 }
-async function speciesReptile() {
-    await fetch('/post/Reptile', {
-              method: 'GET',
-              body: JSON.stringify({
-                  post_id
-              }),
-              headers: {
-                  'Content-Type': 'application/json'
-              }
-          });
-  
-          if (response.ok) {
-              document.location.reload();
-          } else {
-              alert(response.statusText);
-          }
-  }
-  async function speciesOther() {
-    await fetch('/post/Other', {
-              method: 'GET',
-              body: JSON.stringify({
-                  post_id
-              }),
-              headers: {
-                  'Content-Type': 'application/json'
-              }
-          });
-  
-          if (response.ok) {
-              document.location.reload();
-          } else {
-              alert(response.statusText);
-          }
-  }
 
-
-document.querySelector('.dogs').addEventListener('submit', speciesDog);
-document.querySelector('.cats').addEventListener('submit', speciesCat);
-document.querySelector('.reptile').addEventListener('submit', speciesReptile);
-document.querySelector('.other').addEventListener('submit', speciesOther);
+document.querySelector('.quick-search-form').addEventListener('click', filterSpeciesPosts);
+document.querySelector('#name-search-form').addEventListener('submit', filterNamePosts);

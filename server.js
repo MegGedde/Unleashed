@@ -2,16 +2,17 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers/')
 const path = require('path');
+const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const hbs = exphbs.create();
+const hbs = exphbs.create({ helpers });
 
 // IMAGES
 // store uploaded images middleware
-const multer  = require('multer')
-const upload = multer({ dest: './uploads' })
-const {uploadFile} = require('./s3')
+// const multer = require('multer')
+// const upload = multer({ dest: './uploads' })
+// const { uploadFile } = require('./s3')
 
 const sess = {
   secret: 'Super Secret',
@@ -37,6 +38,7 @@ app.use(routes);
 // Starts Handlebars
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.set('port', PORT);
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {

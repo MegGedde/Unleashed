@@ -1,9 +1,8 @@
 
 const User = require('./User');
+const Pet = require('./Pet');
 const Post = require('./Post');
 const Comment = require('./Comment');
-const Pet = require('./Pet');
-
 // User
 User.hasMany(Post, {
   foreignKey: 'user_id'
@@ -16,6 +15,16 @@ User.hasMany(Pet, {
 User.hasMany(Comment, {
   foreignKey: 'user_id'
 });
+
+// Pets
+Pet.hasMany(Post, {
+  foreignKey: 'pet_id',
+});
+
+Pet.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
 
 // Post
 Post.belongsTo(User, {
@@ -30,14 +39,6 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id'
 });
 
-// Pets
-Pet.hasMany(Post, {
-  foreignKey: 'pet_id',
-});
-
-Pet.belongsTo(User, {
-  foreignKey: 'user_id',
-});
 
 // Comment
 Comment.belongsTo(User, {

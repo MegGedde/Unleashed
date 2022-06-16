@@ -1,63 +1,79 @@
 
-<h1>{{posts.title}}</h1>
 {{!-- POST INFO --}}
-<form>
-  <div class="m-0 columns">
-    <div class="p-0 column">
-      <div class="form-header">
-        <h1 class="is-capitalized">{{posts.pet.pet_name}}</h1>
-        <h3 class="is-capitalized">{{posts.pet.species}}</h3>
+<form class="m-3 short-post">
+  <div>
+    <h1>{{post.pet.pet_name}}</h1>
+    <h2>{{post.title}}</h2>
+    <h2>Posted by {{post.user.username}} on {{format_date post.created_at}}</h2>
+  </div>
+  <div class="form-header ">
+        <img src="/api/pets/images/{{post.pet.photo}}" alt="HTML5 Icon" style="width:250px;height:250px;">
+  </div>
+  <div class="m-0 columns form-header">
+    <div class="p-0 column is-one-quarter">
+      <div>
+        <h2 class="left">{{post.pet.pet_name}}'s Details</h2>
       </div>
-      <div class="single-post-description">
-        <p><span class="text-accent">Age:</span> {{posts.pet.pet_age}}</p>
-        <p><span class="text-accent">Color:</span> {{posts.pet.color}}</p>
-        <p><span class="text-accent">Breed:</span> {{posts.pet.breed}}</p>
+      <div class="m-2 left">
+        <label>Species:<label>
+            <h3>{{post.pet.species}}</h3>
+            <label>Age:</label>
+            <h3>{{post.pet.pet_age}}</h3>
+            <label>Color:</label>
+            <h3>{{post.pet.color}}</h3>
+            <label>Breed:</label>
+            <h3>{{post.pet.breed}}</h3>
       </div>
     </div>
-    <div class="column is-two-thirds ">
-      <img src="/api/pets/images/{{posts.pet.photo}}" alt="HTML5 Icon" style="width:400px;height:400px;">
+    <div class="p-0 form-header column">
+      <h2 class="left">Last Seen Information</h2>
+      <div class="m-2 left">
+        <label>Time:</label>
+        <h3>{{post.last_seen_time}}</h3>
+        <label>Street:</label>
+        <h3>{{post.last_seen_street}}</h3>
+        <label>City:</label>
+        <h3>{{post.last_seen_city}}</h3>
+        <label>State:</label>
+        <h3>{{post.last_seen_state}}</h3>
+        <label>Country:</label>
+        <h3>{{post.last_seen_country}}</h3>
+      </div>
     </div>
   </div>
-  <div>
-    <div class="single-post-description has-text-centered">
-        <p class="has-text-centered"><span class="text-accent span-block">What to do if you encounter {{posts.pet.pet_name}}:</span> {{posts.pet.when_encounter}}</p>
-        <p><span class="text-accent">Unique Features:</span> {{posts.pet.unique_features}}</p>
 
-      </div>
-  </div>
-  <div>
-    <h2 class="heading">Last Seen information</h2>
-    <div class="single-post-description has-text-centered">
-      <p><span class="text-accent">Street:</span> {{posts.last_seen_street}}</p>
-      <p><span class="text-accent">City:</span> {{posts.last_seen_city}}</p>
-      <p><span class="text-accent">State: </span>{{posts.last_seen_state}}</p>
-    </div>
-  </div>
 </form>
-
-<div class="comment columns">
-  
-  <div class="column is-four-fifths">
-    <div>
-      <p>I saw them at the hospital</p>
-    </div>
-  </div>
-  <div class="comment-header column">
-    <p>Username</p>    
-    <p>1 day ago</p>
-  </div>
-</div>
 
 {{#if loggedIn}}
 <!-- POST A COMMENT FORM -->
-<form>
+<form id="comment-form">
   <div class="form-header">
     <h2>POST A COMMENT</h2>
+
   </div>
   <div class="m-2">
-    <textarea class="m-0 textarea" placeholder="Text area..."></textarea>
+    <textarea class="m-0 textarea" placeholder="Text area..." id="comment-text"></textarea>
   </div>
-  <button class="btn-generic">Post</button>
+  <button class="m-0 btn-generic" type="submit">Post</button>
 </form>
+{{/if}}
+
+{{#each post.comments as |comment|}}
+<div class="m-1 comment columns">
+  <div class="column is-four-fifths">
+    <div>
+      <p>{{comment.comment}}</p>
+    </div>
+  </div>
+  <div class="comment-header column">
+    <p>By {{user.username}}</p>
+    <p>On {{format_date created_at}}</p>
+  </div>
+</div>
+{{/each}}
+
+{{#if loggedIn}}
+
+<script src="/javascript/comment.js"></script>
 
 {{/if}}

@@ -1,5 +1,5 @@
 <!-- PET INFO FORM -->
-<form class="m-4">
+<form class="m-4" id="edit-post-form">
     <div class="form-header">
         <h2>EDIT A POST FORM</h2>
     </div>
@@ -7,16 +7,18 @@
     <h3>Last Seen Info</h3>
     <article class="m-3">
         <label>Time</label>
-        <input type="time">
+        <input type="time" id="time">
         <label>Street</label>
-        <input type="text" placeholder="1234 Sesame Street">
+        <textarea type="text" placeholder="1234 Sesame Street" id="street">{{post.last_seen_street}}</textarea>
         <label>City</label>
-        <input type="text" placeholder="Houston">
+        <textarea type="text" placeholder="Houston" id="city">{{post.last_seen_city}}</textarea>
         <label>State</label>
-        <input type="text" placeholder="TX">
+        <textarea type="text" placeholder="TX" id="state">{{post.last_seen_state}}</textarea>
         <label>Country</label>
-        <input type="text" placeholder="USA">
+        <textarea type="text" placeholder="USA" id="country">{{post.last_seen_country}}</textarea>
     </article>
-    <button class="m-0 btn-generic">Save</button>
-    <button class="m-0 btn-generic btn-delete">Delete</button>
+    <button class="m-0 btn-generic square" type="submit">Save</button>
+    <button class="m-0 btn-generic btn-delete" type="reset">Delete</button>
 </form>
+
+<script src="/javascript/edit-post.js"></script>

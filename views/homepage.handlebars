@@ -5,36 +5,57 @@
         <h2>QUICK FILTERS</h2>
     </div>
     <div class="m-1 is-flex is-justify-content-center columns">
-        <button type="submit" class="column dogs">Dogs</button>
-        <button type="submit" class="column cats">Cats</button>
-        <button type="submit" class="column reptile">Reptiles</button>
-        <button type="submit" class="column other">Others</button>
+        <button type="click" class="column" id="dog">Dogs</button>
+        <button type="click" class="column" id="cat">Cats</button>
+        <button type="click" class="column" id="reptile">Reptiles</button>
+        <button type="click" class="column" id="other">Others</button>
     </div>
 </form>
 
 <!-- SEARCH BAR FORM -->
-<form class="m-4 search-form">
+<form class="m-4 search-form" id="name-search-form">
     <div class="m-2 columns">
-        <input class="m-2 column is-three-quarters" type="text" placeholder="Search...">
-        <button class="m-2 column">On the Prowl!</button>
+        <input class="m-2 column is-three-quarters" type="text" placeholder="Name Search" id="name">
+        <button class="m-2 column" type="submit">On the Prowl!</button>
     </div>
 </form>
 
 
-{{#each posts as |post|}}
-
-    {{> post-info post}}
-
-
-{{/each}}
 {{#if loggedIn}}
-<a href="/addpost" class="btn-addpost">+ Post A Lost Pet</a>
+<a href="/addpost" class="m-4 btn-addpost">+ Post A Lost Pet</a>
 {{/if}}
-  {{!-- <footer>
-        <h1 class="footer-header">Contact Us:</h1>
-        <ul class="contact-information">
-            <p>Email: <a href="mailto:unleashedteam@unleashed.com">unleashedteam@unleashed.com</a></p>
-            <p>Phone: <a href="tel:1231231234">(123)-123-1234</a></p>
-            <p>© 2022 Unleashed LLC</p>
-        </ul>
-</footer> --}}
+
+{{#each posts as |post|}}
+<form class="m-3 short-post">
+    <div class="m-2">
+        <h1 class="p-0">{{pet.pet_name}}</h1>
+        <h2>{{post.title}}</h2>
+        <h2>Posted by {{user.username}} on {{format_date post.created_at}}</p>
+    </div>
+    <div class="m-0 columns  form-header">
+        <div class="column fill">
+        <img src="/api/pets/images/{{pet.photo}}" alt="" style="width:250px;height:250px;">
+        </div>
+        <div class="p-3 column">
+            <h2 class="heading">Details</h2>
+            <h3>Species: {{pet.species}}</h3>
+            <h3>Breed: {{pet.breed}}</h3>
+            <h3>Age: {{pet.pet_age}}</h3>
+            <h3>Color: {{pet.color}}</h3>
+        </div>
+        <div class="column">
+            <h2 class="heading">Last Seen</h2>
+            <h3>Time: {{last_seen_time}}</h3>
+            <h3>Street: {{last_seen_street}}</h3>
+            <h3>City: {{last_seen_city}}</h3>
+            <h3>State: {{last_seen_state}}</h3>
+            <h3>Country: {{last_seen_country}}</h3>
+        </div>
+    </div>
+    <a class="m-0" href="/post/{{post.id}}">Check Posting</a> 
+</form>
+{{/each}}
+
+
+<script src="/javascript/filtered.js"></script>
+

@@ -1,3 +1,4 @@
+const errorEl = document.querySelector('#error');
 
 async function signupFormHandler(event) {
     event.preventDefault();
@@ -5,10 +6,10 @@ async function signupFormHandler(event) {
     const username = document.querySelector('#username-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
-    console.log(username, password)
+    console.log(username, password,email);
 
   
-    if (username && password) {
+    if (username && password && email) {
       const response = await fetch('/api/user', {
         method: 'post',
         body: JSON.stringify({
@@ -34,14 +35,15 @@ async function signupFormHandler(event) {
         // check the response status
         if (response.ok) {
           document.location.replace('/dashboard');
-        } else {
-          console.log('heybro')
+        } else {      
           alert(response.statusText);
         }
       } else {
-        console.log('yayadude')
+        
         alert(response.statusText);
       }
+    } else {
+      errorEl.innerHTML= 'Please fill out Sign Up Form Completely!';
     }
   }
   
