@@ -121,10 +121,9 @@ router.get('/images/:key', (req, res) => {
 
     // Sends the image data right to the user
     readStream.pipe(res)
-    res.redirect(`/images/${key}`)
+    // res.redirect(`/images/${key}`)
 })
  
-// Uses AWS Services
 // Grabs form data and creates a new Pet 
 router.post('/create-pet', upload.single('photo'), async (req, res) => {
     const file = req.file
@@ -164,7 +163,6 @@ router.post('/create-pet', upload.single('photo'), async (req, res) => {
         res.status(500).json(err);
       });
   })
-
 
 
 module.exports = router

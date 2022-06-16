@@ -6,7 +6,7 @@
     <h2>Posted by {{post.user.username}} on {{format_date post.created_at}}</h2>
   </div>
   <div class="form-header ">
-    <img class="p-4 form-img" src="/images/paw-print.png" alt="image of a paw print">
+        <img src="/api/pets/images/{{post.pet.photo}}" alt="HTML5 Icon" style="width:250px;height:250px;">
   </div>
   <div class="m-0 columns form-header">
     <div class="p-0 column is-one-quarter">
