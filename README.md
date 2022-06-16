@@ -24,6 +24,7 @@
 - Bulma
 
 ## Usage
+<img width="1856" alt="Screen Shot 2022-06-16 at 9 22 13 AM" src="https://user-images.githubusercontent.com/98546095/174091325-c11434c9-74bb-4284-b837-8faab9d324bb.png">
 
 ## License
 
