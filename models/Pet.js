@@ -25,9 +25,9 @@ Pet.init(
           model: 'user',
           key: 'id'
         }
-      }
+      },
 
-    },
+    
     pet_age: {
       type: DataTypes.INTEGER,
       allowNull: false
