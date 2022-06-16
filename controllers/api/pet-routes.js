@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const multer  = require('multer')
-const upload = multer({ dest: '../../uploads' })
+const upload = multer({ dest: '../tmp/uploads' })
+
 const { Pet } = require('../../models')
 const {uploadFile, downloadFile} = require('../../s3')
 const fs = require('fs')

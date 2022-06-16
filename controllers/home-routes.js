@@ -5,6 +5,7 @@ const { Post, User, Comment, Pet } = require('../models');
 // HOMEPAGE
 router.get('/', (req, res) => {
   console.log(req.session);
+
   Post.findAll({
     attributes: ['id', 'title','last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
     include: [
@@ -31,6 +32,7 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 // LOGIN AND SIGN UP
 router.get('/login', (req, res) => {
@@ -196,6 +198,7 @@ router.get('/dashboard', (req, res) => {
     where: {
       user_id: req.session.user_id
     },
+
     attributes: ['id', 'last_seen_time', 'last_seen_street', 'last_seen_city', 'last_seen_state', 'last_seen_country', 'created_at'],
     include: [
       {
@@ -223,6 +226,7 @@ router.get('/dashboard', (req, res) => {
     .then(dbPostData => {
       // serialize data before passing to template
       posts = dbPostData.map(post => post.get({ plain: true }));
+
       res.render('dashboard', {
         pets,
         posts,
@@ -234,6 +238,7 @@ router.get('/dashboard', (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 // SINGLE POST
 router.get('/post/:id', (req, res) => {
@@ -281,6 +286,8 @@ router.get('/post/:id', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+
+
 });
 
 

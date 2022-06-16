@@ -14,6 +14,19 @@ Pet.init(
     pet_name: {
       type: DataTypes.STRING,
       allowNull: false
+      },
+      unique_features : {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'user',
+          key: 'id'
+        }
+      }
+
     },
     pet_age: {
       type: DataTypes.INTEGER,

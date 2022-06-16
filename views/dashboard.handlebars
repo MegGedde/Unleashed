@@ -1,4 +1,6 @@
+
 <h1>My Dashboard</h1>
+
 
 
 <a href="/addpet" class="btn-addpost">+ Add A Pet</a>
@@ -20,6 +22,7 @@
 <a href="/addpost" class="m-4 btn-addpost">+ Post A Lost Pet</a>
 
 {{#each posts as |post|}}
+
 <form class="m-3 short-post">
     <div class="m-2">
         <h1 class="p-0">{{pet.pet_name}}</h1>
@@ -36,6 +39,7 @@
             <h3>Breed: {{pet.breed}}</h3>
             <h3>Age: {{pet.pet_age}}</h3>
             <h3>Color: {{pet.color}}</h3>
+
         </div>
         <div class="column">
             <h2 class="heading">Last Seen</h2>
