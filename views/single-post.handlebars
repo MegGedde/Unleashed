@@ -1,50 +1,79 @@
-<div>This is Single Post Page</div>
-
 
 {{!-- POST INFO --}}
-<form>
-  <div class="m-0 columns">
-    <div class="p-0 column">
-      <div class="form-header">
-        <h1>Name</h1>
-        <h3>Type</h3>
-      </div>
-      <p>Age: 00</p>
-      <p>Color: Brown</p>
-      <p>Breed:</p>
-    </div>
-    <div class="column is-two-thirds">
-      <img src="html5.gif" alt="HTML5 Icon" style="width:500px;height:500px;">
-    </div>
-  </div>
+<form class="m-3 short-post">
   <div>
-    <h2 class="heading">Last Seen information</h2>
-    <p>Street: information</p>
-    <p>City: information</p>
-    <p>State: information</p>
+    <h1>{{post.pet.pet_name}}</h1>
+    <h2>{{post.title}}</h2>
+    <h2>Posted by {{post.user.username}} on {{format_date post.created_at}}</h2>
   </div>
+  <div class="form-header ">
+        <img src="/api/pets/images/{{post.pet.photo}}" alt="HTML5 Icon" style="width:250px;height:250px;">
+  </div>
+  <div class="m-0 columns form-header">
+    <div class="p-0 column is-one-quarter">
+      <div>
+        <h2 class="left">{{post.pet.pet_name}}'s Details</h2>
+      </div>
+      <div class="m-2 left">
+        <label>Species:<label>
+            <h3>{{post.pet.species}}</h3>
+            <label>Age:</label>
+            <h3>{{post.pet.pet_age}}</h3>
+            <label>Color:</label>
+            <h3>{{post.pet.color}}</h3>
+            <label>Breed:</label>
+            <h3>{{post.pet.breed}}</h3>
+      </div>
+    </div>
+    <div class="p-0 form-header column">
+      <h2 class="left">Last Seen Information</h2>
+      <div class="m-2 left">
+        <label>Time:</label>
+        <h3>{{post.last_seen_time}}</h3>
+        <label>Street:</label>
+        <h3>{{post.last_seen_street}}</h3>
+        <label>City:</label>
+        <h3>{{post.last_seen_city}}</h3>
+        <label>State:</label>
+        <h3>{{post.last_seen_state}}</h3>
+        <label>Country:</label>
+        <h3>{{post.last_seen_country}}</h3>
+      </div>
+    </div>
+  </div>
+
 </form>
 
-<div class="comment columns">
-  
+{{#if loggedIn}}
+<!-- POST A COMMENT FORM -->
+<form id="comment-form">
+  <div class="form-header">
+    <h2>POST A COMMENT</h2>
+
+  </div>
+  <div class="m-2">
+    <textarea class="m-0 textarea" placeholder="Text area..." id="comment-text"></textarea>
+  </div>
+  <button class="m-0 btn-generic" type="submit">Post</button>
+</form>
+{{/if}}
+
+{{#each post.comments as |comment|}}
+<div class="m-1 comment columns">
   <div class="column is-four-fifths">
     <div>
-      <p>I saw them at the hospital</p>
+      <p>{{comment.comment}}</p>
     </div>
   </div>
   <div class="comment-header column">
-    <p>Username</p>    
-    <p>1 day ago</p>
+    <p>By {{user.username}}</p>
+    <p>On {{format_date created_at}}</p>
   </div>
 </div>
+{{/each}}
 
-<!-- POST A COMMENT FORM -->
-<form>
-  <div class="form-header">
-    <h2>POST A COMMENT</h2>
-  </div>
-  <div class="m-2">
-    <textarea class="m-0 textarea" placeholder="Text area..."></textarea>
-  </div>
-  <button class="btn-generic">Post</button>
-</form>
+{{#if loggedIn}}
+
+<script src="/javascript/comment.js"></script>
+
+{{/if}}

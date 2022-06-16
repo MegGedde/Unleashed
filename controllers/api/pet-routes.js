@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const multer  = require('multer')
-const upload = multer({ dest: '../../uploads' })
+const upload = multer({ dest: '../tmp/uploads' })
+
 const { Pet } = require('../../models')
 const {uploadFile, downloadFile} = require('../../s3')
 const fs = require('fs')
@@ -10,7 +11,7 @@ const promisify = require('util.promisify')
 const removeFile = promisify(fs.unlink)
 
 // Get all pets 
-router.get('/', (req, res) => {
+router.get('/all', (req, res) => {
     Pet.findAll({
         attributes: [
             'id',
@@ -23,9 +24,11 @@ router.get('/', (req, res) => {
             'unique_features',
             'photo',
             'user_id'
-        ]
+        ],
+        
     })
     .then(dbPetData => {
+        
         res.json(dbPetData)
     })
     .catch(err => {
@@ -33,6 +36,7 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
       });
 })
+
 // Get a pet by ID
 router.get('/:id', (req, res) => {
     Pet.findOne({
@@ -42,13 +46,7 @@ router.get('/:id', (req, res) => {
         attributes: [
             'id',
             'pet_name',
-            'pet_age',
-            'species',
-            'breed',
-            'color',
-            'when_encounter',
-            'photo',
-            'user_id'
+            'photo'
 
         ]    
     })
@@ -70,12 +68,11 @@ router.post('/', (req, res) => {
         breed: req.body.breed,
         color: req.body.color,
         when_encounter: req.body.when_encounter,
-        photo: req.body.photo,
         unique_features: req.body.unique_features,
-        user_id: req.body.user_id
+        user_id: req.session.user_id
     })
     .then(dbPetData => {
-        res.json(dbPetData)
+        res.json(dbPetData);
     })
     .catch(err => {
         console.log(err);
@@ -159,8 +156,8 @@ router.post('/create-pet', upload.single('photo'), async (req, res) => {
         color: petColor,
         when_encounter: petWhenEncounter,
         unique_features: petUniqueFeatures,
-        photo: petPhoto
-                // user_id: req.body.user_id
+        photo: petPhoto,
+        user_id: req.session.user_id
     })
     .catch(err => {
         console.log(err);
@@ -168,6 +165,38 @@ router.post('/create-pet', upload.single('photo'), async (req, res) => {
       });
   })
 
+
 module.exports = router
 
 
+{/* <form class="m-4" action="/api/pets/create-pet" method="post" enctype="multipart/form-data">
+<div class="form-header">
+   <h2>ADD A PET FORM</h2>
+</div>
+<h3>Pet Description:</h3>
+   <article class="m-4">
+       <label for="petName">*Name</label>
+       <input id="petName"  name="pet_name" type="text" placeholder="Pet Name">
+       <label for="petAge">Age</label>
+       <input id="petAge" name="pet_age" min="0" max="25" type="number" placeholder="Pet Age">
+       <select class="is-flex p-2 box my-2" name="species" id="">
+           <option value="" disabled selected>Pet Species</option>
+           <option value="dog">Dog</option>
+           <option value="cat">Cat</option>
+           <option value="reptile">Reptile</option>
+           <option value="other">Other</option>
+       </select>
+       <label for="petBreed">Breed</label>
+       <input id="petBrred" name="breed" type="text" placeholder="Breed">
+       <label for="petColor">Color</label>
+       <input id="petColor" name="color" type="text" placeholder="Color">
+       <label for="petUniqueFeatures">Does this pet have any unique features?</label>
+       <input id="petUniqueFeatures" name="unique_features" type="text" placeholder="...">
+       <label for="petWhenEncounter">What to do when encountered?</label>
+       <input id="petWhenEncounter" name="when_encounter" type="text" placeholder="...">
+       
+       <label for="uploadPhoto">Upload a photo</label>
+       <input id="uploadPhoto" name="photo" type="file" accept="image/png, image/jpg">
+       <button class="btn-generic m-0" type="submit">Create Pet</button>
+   </article>
+</form> */}

@@ -1,9 +1,12 @@
+const errorEl = document.querySelector('#error');
+
 async function loginFormHandler(event) {
     event.preventDefault();
   
     const username = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
-  
+
+    console.log(username, password)
     if (username && password) {
       const response = await fetch('/api/user/login', {
         method: 'post',
@@ -16,11 +19,14 @@ async function loginFormHandler(event) {
       
       // check the response status
       if (response.ok) {
+        console.log('it was a success');
         document.location.replace('/dashboard');
       } else {
-        alert(response.statusText);
+        console.log('it was an error');
+        errorEl.innerHTML= 'Invaild username and/or password!';
+        // alert(response.statusText);
       }
     }
   }
   
-  document.querySelector('#login-form').addEventListener('submit', loginFormHandler);
+  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);

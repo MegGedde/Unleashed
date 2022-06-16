@@ -1,0 +1,24 @@
+<!-- PET INFO FORM -->
+<form class="m-4" id="edit-post-form">
+    <div class="form-header">
+        <h2>EDIT A POST FORM</h2>
+    </div>
+    {{!-- LAST SEEN INFO --}}
+    <h3>Last Seen Info</h3>
+    <article class="m-3">
+        <label>Time</label>
+        <input type="time" id="time">
+        <label>Street</label>
+        <textarea type="text" placeholder="1234 Sesame Street" id="street">{{post.last_seen_street}}</textarea>
+        <label>City</label>
+        <textarea type="text" placeholder="Houston" id="city">{{post.last_seen_city}}</textarea>
+        <label>State</label>
+        <textarea type="text" placeholder="TX" id="state">{{post.last_seen_state}}</textarea>
+        <label>Country</label>
+        <textarea type="text" placeholder="USA" id="country">{{post.last_seen_country}}</textarea>
+    </article>
+    <button class="m-0 btn-generic square" type="submit">Save</button>
+    <button class="m-0 btn-generic btn-delete" type="reset">Delete</button>
+</form>
+
+<script src="/javascript/edit-post.js"></script>

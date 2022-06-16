@@ -1,12 +1,14 @@
 <form class="m-0 columns">
-    <a href="/post/1" class="p-3 column form-header">
-        <h1>{{pet.pet_name}}</h1>
-        <h3 class="is-capitalized">{{pet.species}}</h3>
-        <h3>Age: {{pet.pet_age}}</h3>
-        <h3 >Color: {{pet.color}}</h3>
-        <h3 class="is-capitalized">Breed: {{pet.breed}}</h3>
-    </a>
-    <div class="has-text-centered">
+    <div class="column">
+        <a href="/posts/{{id}}" class="p-3 column form-header">
+            <h1>{{pet.pet_name}}</h1>
+            <h3 class="is-capitalized">{{pet.species}}</h3>
+            <h3>Age: {{pet.pet_age}}</h3>
+            <h3 >Color: {{pet.color}}</h3>
+            <h3 class="is-capitalized">Breed: {{pet.breed}}</h3>
+        </a>
+    </div>
+    <div class="has-text-centered column">
         <h2 class="heading">
             Last Seen: {{last_seen_time}}
         </h2>
@@ -23,11 +25,11 @@
 <form>
     <!-- POST HEADER INFO -->
     <div class="form-header">
-        <a class="post-link" href="/post/{{id}}">post. title</a>
+        <a class="post-link" href="/posts/{{id}}">{{title}}</a>
         <h4 class="posted-by">Posted by {{user.username}} on {{created_at}}</h4>
     </div>
     <!-- POST MESSAGE -->
     <div>
-        <p>{{post.content}}</p>
+        <p>test</p>
     </div>
 </form>

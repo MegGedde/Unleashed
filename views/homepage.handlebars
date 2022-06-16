@@ -1,84 +1,61 @@
 
-
 <!-- QUICK FILTER -->
 <form class="m-4 quick-search-form">
     <div class="form-header">
         <h2>QUICK FILTERS</h2>
     </div>
     <div class="m-1 is-flex is-justify-content-center columns">
-        <button class="column">Dogs</button>
-        <button class="column">Cats</button>
-        <button class="column">Reptile</button>
-        <button class="column">Others</button>
+        <button type="click" class="column" id="dog">Dogs</button>
+        <button type="click" class="column" id="cat">Cats</button>
+        <button type="click" class="column" id="reptile">Reptiles</button>
+        <button type="click" class="column" id="other">Others</button>
     </div>
 </form>
 
 <!-- SEARCH BAR FORM -->
-<form class="m-4 search-form">
+<form class="m-4 search-form" id="name-search-form">
     <div class="m-2 columns">
-        <input class="m-2 column is-three-quarters" type="text" placeholder="Search...">
-        <button class="m-2 column">On the Prowl!</button>
+        <input class="m-2 column is-three-quarters" type="text" placeholder="Name Search" id="name">
+        <button class="m-2 column" type="submit">On the Prowl!</button>
     </div>
 </form>
 
+
+{{#if loggedIn}}
+<a href="/addpost" class="m-4 btn-addpost">+ Post A Lost Pet</a>
+{{/if}}
 
 {{#each posts as |post|}}
-
-    {{> post-info post}}
-
-
-{{/each}}
-
-<form class="m-0">
-    <a href="/post/1" class="short-post">
-        <h1 class="p-2">Name</h1>
-    </a>
-    <div class="m-0 columns">
-        <div class="column form-header fill">
-            <img src="html5.gif" alt="HTML5 Icon" style="width:250px;height:250px;">
-        </div>
-        <div class="p-3 column form-header">
-            <h3>Type: Dog</h3>
-            <h3>Age: 00</h3>
-            <h3>Color: Brown</h3>
-            <h3>Breed: Husky</h3>
-        </div>
-        <div class="column">
-            <h2 class="heading">Last Seen information</h2>
-            <p>Street: information</p>
-            <p>City: information</p>
-            <p>State: information</p>
-        </div>
+<form class="m-3 short-post">
+    <div class="m-2">
+        <h1 class="p-0">{{pet.pet_name}}</h1>
+        <h2>{{post.title}}</h2>
+        <h2>Posted by {{user.username}} on {{format_date post.created_at}}</p>
     </div>
-    <p class="p-2 form-header">Posted by User on 4/20/2020</p>
-</form>
-
-{{!-- {{#each posts as |post|}}
-<form class="m-0">
-    <a href="/post/{{post.id}}" class="short-post">
-        <h1 class="Post">{{pet.pet_name}}</h1>
-        <p>Time: {{}}</p>
-    </a>
-    <div class="m-0 columns">
-        <div class="column form-header fill">
-            <img src="{{html5.gif}}" alt="HTML5 Icon" style="width:250px;height:250px;">
+    <div class="m-0 columns  form-header">
+        <div class="column fill">
+        <img src="/api/pets/images/{{pet.photo}}" alt="" style="width:250px;height:250px;">
         </div>
-        <div class="p-3 column form-header">
-            <h3>Age: {{}}</h3>
-            <h3>Color: {{}}</h3>
+        <div class="p-3 column">
+            <h2 class="heading">Details</h2>
             <h3>Species: {{pet.species}}</h3>
             <h3>Breed: {{pet.breed}}</h3>
+            <h3>Age: {{pet.pet_age}}</h3>
+            <h3>Color: {{pet.color}}</h3>
         </div>
         <div class="column">
-            <h2 class="heading">Last Seen Info</h2>
-            <p>Time: {{}}</p>
-            <p>Street: {{}}</p>
-            <p>City: {{}}</p>
-            <p>State: {{}}</p>
-            <p>Country: {{}}</p>
+            <h2 class="heading">Last Seen</h2>
+            <h3>Time: {{last_seen_time}}</h3>
+            <h3>Street: {{last_seen_street}}</h3>
+            <h3>City: {{last_seen_city}}</h3>
+            <h3>State: {{last_seen_state}}</h3>
+            <h3>Country: {{last_seen_country}}</h3>
         </div>
     </div>
+    <a class="m-0" href="/post/{{post.id}}">Check Posting</a> 
 </form>
-{{/each}} --}}
+{{/each}}
 
-<a href="/addpost" class="btn-addpost">+ Post A Lost Pet</a>
+
+<script src="/javascript/filtered.js"></script>
+
